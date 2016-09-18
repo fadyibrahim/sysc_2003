@@ -1,0 +1,175 @@
+XH
+H 5 areas 7 global symbols
+M assign53.C
+S __start Ref0000
+S _printf Ref0000
+A text size A2 flags 0
+dbfile assign53.C
+dbfunc e main 0 fV
+dbline FFFFFFFF 5
+dbline C 5
+dbline D 5
+dbline E 8
+dbline F D
+dbline 10 12
+dbline 11 15
+dbline 12 1A
+dbline 13 1F
+dbline 15 23
+dbline 17 23
+dbline 18 33
+dbline 19 33
+dbline 1A 37
+dbline 1C 39
+dbline 1D 39
+dbline 1E 3F
+dbline 1F 42
+dbline 20 42
+dbline 21 4D
+dbline 14 4D
+dbline FFFFFFFE 4F
+dbline 23 4F
+dbline 0 52
+dbfunc e tempINT 53 fV
+dbsym l i FFFFFFFC I
+dbsym l tempT FFFFFFFE I
+dbline FFFFFFFF 58
+dbline 26 58
+dbline 29 58
+dbline 2A 61
+dbline 2B 69
+dbline 2C 75
+dbline 2D 82
+dbline 2E 89
+dbline 2F 8E
+dbline FFFFFFFE 93
+dbline 30 93
+dbline 0 96
+dbfile assign53.s
+dbfunc 0 ? 0 I
+dbline 4F 0
+dbline 50 1
+dbline 51 3
+dbline 62 5
+dbline 65 8
+dbline 66 A
+dbline 69 D
+dbline 6A F
+dbline 6D 12
+dbline 70 15
+dbline 71 17
+dbline 74 1A
+dbline 75 1C
+dbline 78 1F
+dbline 7A 21
+dbline 82 23
+dbline 83 26
+dbline 84 29
+dbline 85 2B
+dbline 86 2E
+dbline 87 31
+dbline 8C 33
+dbline 8F 37
+dbline 96 39
+dbline 97 3C
+dbline 9A 3F
+dbline 9F 42
+dbline A0 47
+dbline A1 4A
+dbline A5 4D
+dbline AE 4F
+dbline AF 51
+dbline B1 52
+dbline B7 53
+dbline B8 54
+dbline B9 56
+dbline C4 58
+dbline C5 5B
+dbline C6 5C
+dbline C7 5E
+dbline C8 5F
+dbline CB 61
+dbline CC 63
+dbline CD 65
+dbline CE 67
+dbline D2 69
+dbline D3 6C
+dbline D4 6D
+dbline D5 6F
+dbline D6 71
+dbline D7 73
+dbline DA 75
+dbline DB 77
+dbline DC 7A
+dbline DD 7C
+dbline DE 7E
+dbline DF 80
+dbline E2 82
+dbline E3 84
+dbline E4 87
+dbline E7 89
+dbline EA 8E
+dbline EB 90
+dbline F0 93
+dbline F1 95
+dbline F3 96
+S _tempINT Def0053
+S _main Def0000
+A memory size 4000 flags C
+dbfile M:\Sysc
+dbsym e interrupt_vectors 3F8C A[116:58]pfV
+S _interrupt_vectors Def3F8C
+A data size 2 flags 0
+dbfile M:\Sysc
+dbfile assign53.C
+dbsym e ready 0 I
+S _ready Def0000
+A idata size 2 flags 0
+A bss size 2 flags 0
+dbfile assign53.C
+dbsym e temper 0 I
+S _temper Def0000
+T 3F 8C F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF
+R 00 00 00 01
+T 3F 9A F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF
+R 00 00 00 01
+T 3F A8 F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF
+R 00 00 00 01
+T 3F B6 F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF
+R 00 00 00 01
+T 3F C4 F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF
+R 00 00 00 01
+T 3F D2 00 53 F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF
+R 00 00 00 01 00 02 00 00
+T 3F E0 F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF
+R 00 00 00 01
+T 3F EE F8 CF F8 CF F8 CF F8 C7 F8 C3 F8 CB F8 05
+R 00 00 00 01
+T 3F FC F8 09 00 00
+R 00 00 00 01 02 04 00 00
+T 00 00 00 01
+R 00 00 00 03
+T 00 00 34 B7 75 1B 9E 79 00 F0 C6 80 7B 02 52 C6
+R 00 00 00 00
+T 00 0E FA 7B 00 82 79 00 83 C6 60 7B 00 84 C6 86
+R 00 00 00 00
+T 00 1C 7B 00 85 10 EF 20 2A FC 00 00 8C 00 64 2E
+R 00 00 00 00 00 0A 00 04
+T 00 2A 0E FC 00 00 8C 00 01 26 06 1C 02 50 80 20
+R 00 00 00 00 00 04 00 02
+T 00 38 09 CC 00 00 7C 00 00 79 02 50 18 01 80
+R 00 00 00 00 00 07 00 02
+T 00 45 00 00 CC 00 97 16 00 00 20 D4 B7 57 30 3D
+R 00 00 00 00 00 02 00 04 00 05 00 00 02 08 00 01
+T 00 53 34 B7 75 1B 9A F6 00 9C 87 18 0F C7 6C 1E
+R 00 00 00 00
+T 00 61 EC 1E 84 03 C4 FF 6C 1E F6 00 9D 87 6C 1A
+R 00 00 00 00
+T 00 6F EC 1E E3 1A 6C 1E EC 1E CD 00 08 B7 D6 18
+R 00 00 00 00
+T 00 7D 15 B7 D6 6D 1E EC 1E 83 00 05 6C 1E 18 05
+R 00 00 00 00
+T 00 8B 1E 00 00 C6 86 7B 00 85 B7 57 30 0B
+R 00 00 00 00 00 03 00 04
+T 00 97 54 65 6D 70 3D 20 25 64 20 0A 00
+R 00 00 00 00

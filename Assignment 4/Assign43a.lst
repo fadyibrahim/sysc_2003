@@ -1,0 +1,183 @@
+WARNING: EXTCODE CODE AREA DO NOT CONTAIN RELOCATED ADDRESSES.
+THIS WILL BE REMEDIED IN A LATER RELEASE.
+                        .module Assign43a.C
+                        .area data
+ 1000            _i::
+ 1000                    .blkb 2
+                        .area idata
+--- 0000 0000              .word 0
+                        .area data
+--- 0002                   .dbfile Assign43a.C
+--- 0002                   .dbsym e i _i I
+ 1002            _counterClockwise::
+ 1002                    .blkb 2
+                        .area idata
+--- 0002 0000              .word 0
+                        .area data
+--- 0004                   .dbfile Assign43a.C
+--- 0004                   .dbsym e counterClockwise _counterClockwise I
+ 1004            _clockwise::
+ 1004                    .blkb 2
+                        .area idata
+--- 0004 0000              .word 0
+                        .area data
+--- 0006                   .dbfile Assign43a.C
+--- 0006                   .dbsym e clockwise _clockwise I
+                        .area text
+--- 0000                   .dbfile Assign43a.C
+--- 0000                   .dbfunc e delay _delay fV
+ 402A            _delay::
+ 402A                    .dbline -1
+ 402A                    .dbline 12
+ 402A            ; #include <stdio.h>
+ 402A            ; #include "hcs12dp256.h"
+ 402A            ; int i = 0;//counter
+ 402A            ; int counterClockwise =0;//clockwise incrementer
+ 402A            ; int clockwise =0;//counter clockwise incrementer
+ 402A            ; 
+ 402A            ; 
+ 402A            ; 
+ 402A            ; 
+ 402A            ; 
+ 402A            ; 
+ 402A            ; void delay(){//delay for a considerable 10 ms
+ 402A                    .dbline 13
+ 402A  CC0000            ldd #0
+ 402D  7C1000            std _i
+ 4030            L4:
+ 4030                    .dbline 13
+ 4030                    .dbline 14
+ 4030            L5:
+ 4030                    .dbline 13
+ 4030            ;    for(i=0; i<10000; i++){
+ 4030  FC1000            ldd _i
+ 4033  C30001            addd #1
+ 4036  7C1000            std _i
+ 4039                    .dbline 13
+ 4039  FC1000            ldd _i
+ 403C  8C2710            cpd #10000
+ 403F  2DEF              blt L4
+ 4041                    .dbline -2
+ 4041                    .dbline 15
+ 4041            ;    }
+ 4041            ; }
+ 4041            L3:
+ 4041                    .dbline 0 ; func end
+ 4041  3D                rts
+ 4042                    .dbend
+ 4042                    .dbfunc e main _main fI
+ 4042            _main::
+ 4042                    .dbline -1
+ 4042                    .dbline 17
+ 4042            ; 
+ 4042            ; int main(){
+ 4042                    .dbline 20
+ 4042            ;       
+ 4042            ;       
+ 4042            ;       DDRP = 0xF0;//enable port P for the stepper motor
+ 4042  C6F0              ldab #240
+ 4044  7B025A            stab 0x25a
+ 4047                    .dbline 21
+ 4047            ;       PTP = 0x20;
+ 4047  C620              ldab #32
+ 4049  7B0258            stab 0x258
+ 404C                    .dbline 22
+ 404C            ;       DDRT = 0xF0;//enable the bottom and left coils for the stepper motor
+ 404C  C6F0              ldab #240
+ 404E  7B0242            stab 0x242
+ 4051  2027              bra L10
+ 4053            L9:
+ 4053                    .dbline 24
+ 4053                    .dbline 25
+ 4053  C660              ldab #96
+ 4055  7B0240            stab 0x240
+ 4058                    .dbline 26
+ 4058  16402A            jsr _delay
+ 405B                    .dbline 27
+ 405B  C640              ldab #64
+ 405D  7B0240            stab 0x240
+ 4060                    .dbline 28
+ 4060  16402A            jsr _delay
+ 4063                    .dbline 29
+ 4063  790240            clr 0x240
+ 4066                    .dbline 30
+ 4066  16402A            jsr _delay
+ 4069                    .dbline 31
+ 4069  C620              ldab #32
+ 406B  7B0240            stab 0x240
+ 406E                    .dbline 32
+ 406E  16402A            jsr _delay
+ 4071                    .dbline 33
+ 4071  FC1004            ldd _clockwise
+ 4074  C30001            addd #1
+ 4077  7C1004            std _clockwise
+ 407A                    .dbline 34
+ 407A            L10:
+ 407A                    .dbline 24
+ 407A            ;       
+ 407A            ;       while(clockwise<=10){//spin the stepper motor clockwise
+ 407A  FC1004            ldd _clockwise
+ 407D  8C000A            cpd #10
+ 4080  2FD1              ble L9
+ 4082  2027              bra L13
+ 4084            L12:
+ 4084                    .dbline 35
+ 4084                    .dbline 36
+ 4084  C620              ldab #32
+ 4086  7B0240            stab 0x240
+ 4089                    .dbline 37
+ 4089  16402A            jsr _delay
+ 408C                    .dbline 38
+ 408C  790240            clr 0x240
+ 408F                    .dbline 39
+ 408F  16402A            jsr _delay
+ 4092                    .dbline 40
+ 4092  C640              ldab #64
+ 4094  7B0240            stab 0x240
+ 4097                    .dbline 41
+ 4097  16402A            jsr _delay
+ 409A                    .dbline 42
+ 409A  C660              ldab #96
+ 409C  7B0240            stab 0x240
+ 409F                    .dbline 43
+ 409F  16402A            jsr _delay
+ 40A2                    .dbline 44
+ 40A2  FC1002            ldd _counterClockwise
+ 40A5  C30001            addd #1
+ 40A8  7C1002            std _counterClockwise
+ 40AB                    .dbline 45
+ 40AB            L13:
+ 40AB                    .dbline 35
+ 40AB            ;          PTT = 0x60;
+ 40AB            ;          delay();
+ 40AB            ;          PTT = 0x40;
+ 40AB            ;          delay();
+ 40AB            ;          PTT = 0x00;
+ 40AB            ;          delay();
+ 40AB            ;          PTT = 0x20;
+ 40AB            ;          delay();
+ 40AB            ;          clockwise++;
+ 40AB            ;       }
+ 40AB            ;       while(counterClockwise<=10){//spin the stepper motor counter clockwise
+ 40AB  FC1002            ldd _counterClockwise
+ 40AE  8C000A            cpd #10
+ 40B1  2FD1              ble L12
+ 40B3                    .dbline 47
+ 40B3            ;          PTT = 0x20;
+ 40B3            ;          delay();
+ 40B3            ;          PTT = 0x00;
+ 40B3            ;          delay();
+ 40B3            ;          PTT = 0x40;
+ 40B3            ;          delay();
+ 40B3            ;          PTT = 0x60;
+ 40B3            ;          delay();
+ 40B3            ;          counterClockwise++;  
+ 40B3            ;       }
+ 40B3            ; 
+ 40B3            ;       return 0;
+ 40B3  CC0000            ldd #0
+ 40B6                    .dbline -2
+ 40B6            L8:
+ 40B6                    .dbline 0 ; func end
+ 40B6  3D                rts
+ 40B7                    .dbend

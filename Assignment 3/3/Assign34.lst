@@ -1,0 +1,591 @@
+WARNING: EXTCODE CODE AREA DO NOT CONTAIN RELOCATED ADDRESSES.
+THIS WILL BE REMEDIED IN A LATER RELEASE.
+                        .module assign33.c
+                        .area text
+--- 0000                   .dbfile M:\SYSC20~1\assign33.c
+--- 0000                   .dbfunc e main _main fI
+--- 0000           ;    keysPressed -> -8,x
+--- 0000           ;      proximity -> -6,x
+--- 0000           ;    temperature -> -4,x
+--- 0000           ;          speed -> -3,x
+--- 0000           ;     boolResult -> -2,x
+ 402A            _main::
+ 402A  34                pshx
+ 402B  B775              tfr s,x
+ 402D  1B92              leas -14,sp
+ 402F                    .dbline -1
+ 402F                    .dbline 7
+ 402F            ; #include <stdio.h>
+ 402F            ; void printInBinaryByte(char ByteValue);
+ 402F            ; void printInBinaryWord(unsigned int hexValue);
+ 402F            ; int displaySystemStatus(char speed, char temperature, unsigned int proximity, unsigned int *keysPressed);
+ 402F            ; 
+ 402F            ;  int main(void)
+ 402F            ; {
+ 402F                    .dbline 8
+ 402F            ; char speed= 0x34;
+ 402F  C634              ldab #52
+ 4031  6B1D              stab -3,x
+ 4033                    .dbline 9
+ 4033            ; char temperature=0x30;
+ 4033  C630              ldab #48
+ 4035  6B1C              stab -4,x
+ 4037                    .dbline 10
+ 4037            ; unsigned int proximity=0x8890;
+ 4037  CC8890            ldd #0x8890
+ 403A  6C1A              std -6,x
+ 403C                    .dbline 11
+ 403C            ; unsigned int keysPressed=1234;
+ 403C  CC04D2            ldd #1234
+ 403F  6C18              std -8,x
+ 4041                    .dbline 12
+ 4041            ; int boolResult=0;
+ 4041  CC0000            ldd #0
+ 4044  6C1E              std -2,x
+ 4046                    .dbline 13
+ 4046            ; printf("\n");
+ 4046  CC42FF            ldd #L2
+ 4049  164751            jsr _printf
+ 404C                    .dbline 14
+ 404C            ; boolResult=displaySystemStatus(speed,temperature,proximity,&keysPressed);
+ 404C  1918              leay -8,x
+ 404E  6D84              sty 4,sp
+ 4050  18021A82          movw -6,x,2,sp
+ 4054  E61C              ldab -4,x
+ 4056  87                clra
+ 4057  6C80              std 0,sp
+ 4059  E61D              ldab -3,x
+ 405B  87                clra
+ 405C  164076            jsr _displaySystemStatus
+ 405F  6C1E              std -2,x
+ 4061                    .dbline 15
+ 4061            ; printf("\n");
+ 4061  CC42FF            ldd #L2
+ 4064  164751            jsr _printf
+ 4067                    .dbline 16
+ 4067            ; printf("%i\n",boolResult);
+ 4067  18021E80          movw -2,x,0,sp
+ 406B  CC42FB            ldd #L3
+ 406E  164751            jsr _printf
+ 4071                    .dbline 17
+ 4071            ; asm("SWI");
+ 4071  3F                        SWI
+ 4072            
+ 4072                    .dbline -2
+ 4072                    .dbline 18
+ 4072            ; }
+ 4072            L1:
+ 4072  B757              tfr x,s
+ 4074  30                pulx
+ 4075                    .dbline 0 ; func end
+ 4075  3D                rts
+ 4076                    .dbsym l keysPressed -8 i
+ 4076                    .dbsym l proximity -6 i
+ 4076                    .dbsym l temperature -4 c
+ 4076                    .dbsym l speed -3 c
+ 4076                    .dbsym l boolResult -2 I
+ 4076                    .dbend
+ 4076                    .dbfunc e displaySystemStatus _displaySystemStatus fI
+ 4076            ;   objectDetect -> -4,x
+ 4076            ;      direction -> -2,x
+ 4076            ;    keysPressed -> 10,x
+ 4076            ;      proximity -> 8,x
+ 4076            ;    temperature -> 7,x
+ 4076            ;          speed -> 3,x
+ 4076            _displaySystemStatus::
+ 4076  3B                pshd
+ 4077  34                pshx
+ 4078  B775              tfr s,x
+ 407A  1B9C              leas -4,sp
+ 407C                    .dbline -1
+ 407C                    .dbline 22
+ 407C            ; 
+ 407C            ; 
+ 407C            ; int displaySystemStatus(char speed, char temperature, unsigned int proximity, unsigned int *keysPressed)
+ 407C            ; {
+ 407C                    .dbline 25
+ 407C            ; unsigned int direction;
+ 407C            ; unsigned int objectDetect;
+ 407C            ; printf("Speed:  ");
+ 407C  CC42F2            ldd #L5
+ 407F  164751            jsr _printf
+ 4082                    .dbline 26
+ 4082            ; printInBinaryByte(speed);
+ 4082  E603              ldab 3,x
+ 4084  87                clra
+ 4085  1641B6            jsr _printInBinaryByte
+ 4088                    .dbline 27
+ 4088            ; printf("\n");
+ 4088  CC42FF            ldd #L2
+ 408B  164751            jsr _printf
+ 408E                    .dbline 28
+ 408E            ; printf("Temperature:  ");
+ 408E  CC42E3            ldd #L6
+ 4091  164751            jsr _printf
+ 4094                    .dbline 29
+ 4094            ; printInBinaryByte(temperature);
+ 4094  E607              ldab 7,x
+ 4096  87                clra
+ 4097  1641B6            jsr _printInBinaryByte
+ 409A                    .dbline 30
+ 409A            ; printf("\n");
+ 409A  CC42FF            ldd #L2
+ 409D  164751            jsr _printf
+ 40A0                    .dbline 31
+ 40A0            ; direction=proximity;
+ 40A0  1802081E          movw 8,x,-2,x
+ 40A4                    .dbline 32
+ 40A4            ; objectDetect=proximity;
+ 40A4  1802081C          movw 8,x,-4,x
+ 40A8                    .dbline 33
+ 40A8            ; objectDetect=objectDetect>>15;
+ 40A8  EC1C              ldd -4,x
+ 40AA  CD000F            ldy #15
+ 40AD  8D0000            cpy #0
+ 40B0  2704              beq X0
+ 40B2            X1:
+ 40B2  49                lsrd
+ 40B3  0436FC            dbne y,X1
+ 40B6            X0:
+ 40B6  6C1C              std -4,x
+ 40B8                    .dbline 34
+ 40B8            ; if (objectDetect==1)
+ 40B8  EC1C              ldd -4,x
+ 40BA  8C0001            cpd #1
+ 40BD  2608              bne L7
+ 40BF                    .dbline 35
+ 40BF            ;       {
+ 40BF                    .dbline 36
+ 40BF            ;               printf("Object detected!\n");
+ 40BF  CC42D1            ldd #L9
+ 40C2  164751            jsr _printf
+ 40C5                    .dbline 37
+ 40C5            ;       }
+ 40C5  2006              bra L8
+ 40C7            L7:
+ 40C7                    .dbline 39
+ 40C7            ; else
+ 40C7            ;       {
+ 40C7                    .dbline 40
+ 40C7            ;       printf(" Noo bject detected!\n");
+ 40C7  CC42BB            ldd #L10
+ 40CA  164751            jsr _printf
+ 40CD                    .dbline 41
+ 40CD            ;       }
+ 40CD            L8:
+ 40CD                    .dbline 42
+ 40CD            ; direction=direction &0x0007;
+ 40CD  0D1FF8            bclr -1,x,#0xf8
+ 40D0  0D1EFF            bclr -2,x,#0xff
+ 40D3                    .dbline 43
+ 40D3            ; if (direction==0)
+ 40D3  EC1E              ldd -2,x
+ 40D5  2608              bne L11
+ 40D7                    .dbline 44
+ 40D7            ; {
+ 40D7                    .dbline 45
+ 40D7            ;       printf("Direction North!");
+ 40D7  CC42AA            ldd #L13
+ 40DA  164751            jsr _printf
+ 40DD                    .dbline 46
+ 40DD            ;       }
+ 40DD  2067              bra L12
+ 40DF            L11:
+ 40DF                    .dbline 47
+ 40DF            ; else if (direction==1)
+ 40DF  EC1E              ldd -2,x
+ 40E1  8C0001            cpd #1
+ 40E4  2608              bne L14
+ 40E6                    .dbline 48
+ 40E6            ; {
+ 40E6                    .dbline 49
+ 40E6            ;       printf("Direction South!");
+ 40E6  CC4299            ldd #L16
+ 40E9  164751            jsr _printf
+ 40EC                    .dbline 50
+ 40EC            ;       }
+ 40EC  2058              bra L15
+ 40EE            L14:
+ 40EE                    .dbline 51
+ 40EE            ; else if(direction==2)
+ 40EE  EC1E              ldd -2,x
+ 40F0  8C0002            cpd #2
+ 40F3  2608              bne L17
+ 40F5                    .dbline 52
+ 40F5            ;       {
+ 40F5                    .dbline 53
+ 40F5            ;       printf("Direction East!");
+ 40F5  CC4289            ldd #L19
+ 40F8  164751            jsr _printf
+ 40FB                    .dbline 54
+ 40FB            ;       }
+ 40FB  2049              bra L18
+ 40FD            L17:
+ 40FD                    .dbline 55
+ 40FD            ; else if(direction==3)
+ 40FD  EC1E              ldd -2,x
+ 40FF  8C0003            cpd #3
+ 4102  2608              bne L20
+ 4104                    .dbline 56
+ 4104            ;       {
+ 4104                    .dbline 57
+ 4104            ;       printf("Direction West!");
+ 4104  CC4279            ldd #L22
+ 4107  164751            jsr _printf
+ 410A                    .dbline 58
+ 410A            ;       }
+ 410A  203A              bra L21
+ 410C            L20:
+ 410C                    .dbline 59
+ 410C            ; else if(direction==4)
+ 410C  EC1E              ldd -2,x
+ 410E  8C0004            cpd #4
+ 4111  2608              bne L23
+ 4113                    .dbline 60
+ 4113            ;       {
+ 4113                    .dbline 61
+ 4113            ;       printf("Direction NorthEast!");
+ 4113  CC4264            ldd #L25
+ 4116  164751            jsr _printf
+ 4119                    .dbline 62
+ 4119            ;       }
+ 4119  202B              bra L24
+ 411B            L23:
+ 411B                    .dbline 63
+ 411B            ; else if(direction==5)
+ 411B  EC1E              ldd -2,x
+ 411D  8C0005            cpd #5
+ 4120  2608              bne L26
+ 4122                    .dbline 64
+ 4122            ;       {
+ 4122                    .dbline 65
+ 4122            ;       printf("Direction NorthWest!");
+ 4122  CC424F            ldd #L28
+ 4125  164751            jsr _printf
+ 4128                    .dbline 66
+ 4128            ;       }
+ 4128  201C              bra L27
+ 412A            L26:
+ 412A                    .dbline 67
+ 412A            ; else if(direction==6)
+ 412A  EC1E              ldd -2,x
+ 412C  8C0006            cpd #6
+ 412F  2608              bne L29
+ 4131                    .dbline 68
+ 4131            ;       {
+ 4131                    .dbline 69
+ 4131            ;       printf("Direction SouthEast!");
+ 4131  CC423A            ldd #L31
+ 4134  164751            jsr _printf
+ 4137                    .dbline 70
+ 4137            ;       }
+ 4137  200D              bra L30
+ 4139            L29:
+ 4139                    .dbline 71
+ 4139            ; else if(direction==7)
+ 4139  EC1E              ldd -2,x
+ 413B  8C0007            cpd #7
+ 413E  2606              bne L32
+ 4140                    .dbline 72
+ 4140            ;       {
+ 4140                    .dbline 73
+ 4140            ;       printf("Direction SouthWest!");
+ 4140  CC4225            ldd #L34
+ 4143  164751            jsr _printf
+ 4146                    .dbline 74
+ 4146            ;       }
+ 4146            L32:
+ 4146            L30:
+ 4146            L27:
+ 4146            L24:
+ 4146            L21:
+ 4146            L18:
+ 4146            L15:
+ 4146            L12:
+ 4146                    .dbline 75
+ 4146            ; printf("\n");
+ 4146  CC42FF            ldd #L2
+ 4149  164751            jsr _printf
+ 414C                    .dbline 76
+ 414C            ; printf("keysPressed: ");
+ 414C  CC4217            ldd #L35
+ 414F  164751            jsr _printf
+ 4152                    .dbline 77
+ 4152            ; printInBinaryWord(*keysPressed);
+ 4152  ECE3000A          ldd [10,x]
+ 4156  164162            jsr _printInBinaryWord
+ 4159                    .dbline 78
+ 4159            ; return 1;
+ 4159  CC0001            ldd #1
+ 415C                    .dbline -2
+ 415C            L4:
+ 415C  B757              tfr x,s
+ 415E  30                pulx
+ 415F  1B82              leas 2,sp
+ 4161                    .dbline 0 ; func end
+ 4161  3D                rts
+ 4162                    .dbsym l objectDetect -4 i
+ 4162                    .dbsym l direction -2 i
+ 4162                    .dbsym l keysPressed 10 pi
+ 4162                    .dbsym l proximity 8 i
+ 4162                    .dbsym l temperature 6 I
+ 4162                    .dbsym l temperature 7 c
+ 4162                    .dbsym l speed 2 I
+ 4162                    .dbsym l speed 3 c
+ 4162                    .dbend
+ 4162                    .dbfunc e printInBinaryWord _printInBinaryWord fV
+ 4162            ;       constant -> -8,x
+ 4162            ;           loop -> -6,x
+ 4162            ;           temp -> -4,x
+ 4162            ;     andCounter -> -2,x
+ 4162            ;       hexValue -> 2,x
+ 4162            _printInBinaryWord::
+ 4162  3B                pshd
+ 4163  34                pshx
+ 4164  B775              tfr s,x
+ 4166  1B98              leas -8,sp
+ 4168                    .dbline -1
+ 4168                    .dbline 82
+ 4168            ; 
+ 4168            ; }
+ 4168            ; void printInBinaryWord(unsigned int hexValue)
+ 4168            ; {     
+ 4168                    .dbline 83
+ 4168            ;       unsigned int andCounter=32768;
+ 4168  CC8000            ldd #0x8000
+ 416B  6C1E              std -2,x
+ 416D                    .dbline 84
+ 416D            ;       unsigned int constant=hexValue;
+ 416D  18020218          movw 2,x,-8,x
+ 4171                    .dbline 85
+ 4171            ;       int temp=0;
+ 4171  CC0000            ldd #0
+ 4174  6C1C              std -4,x
+ 4176                    .dbline 86
+ 4176            ;       int loop=0;
+ 4176  CC0000            ldd #0
+ 4179  6C1A              std -6,x
+ 417B  202C              bra L38
+ 417D            L37:
+ 417D                    .dbline 88
+ 417D            ;       while (loop!=16)
+ 417D            ;       {
+ 417D                    .dbline 89
+ 417D            ;               temp=constant;
+ 417D  EC18              ldd -8,x
+ 417F  6C1C              std -4,x
+ 4181                    .dbline 90
+ 4181            ;               temp=temp & andCounter;
+ 4181  EC1C              ldd -4,x
+ 4183  A41E              anda -2,x
+ 4185  E41F              andb -1,x
+ 4187  6C1C              std -4,x
+ 4189                    .dbline 91
+ 4189            ;               if(temp==andCounter)
+ 4189  EC1C              ldd -4,x
+ 418B  AC1E              cpd -2,x
+ 418D  2608              bne L40
+ 418F                    .dbline 92
+ 418F            ;               {
+ 418F                    .dbline 93
+ 418F            ;                       printf("1");
+ 418F  CC4215            ldd #L42
+ 4192  164751            jsr _printf
+ 4195                    .dbline 94
+ 4195            ;               }
+ 4195  2006              bra L41
+ 4197            L40:
+ 4197                    .dbline 96
+ 4197            ;               else
+ 4197            ;               {
+ 4197                    .dbline 97
+ 4197            ;                       printf("0");
+ 4197  CC4213            ldd #L43
+ 419A  164751            jsr _printf
+ 419D                    .dbline 98
+ 419D            ;                       }
+ 419D            L41:
+ 419D                    .dbline 99
+ 419D  EC1A              ldd -6,x
+ 419F  C30001            addd #1
+ 41A2  6C1A              std -6,x
+ 41A4                    .dbline 100
+ 41A4  EC1E              ldd -2,x
+ 41A6  49                lsrd
+ 41A7  6C1E              std -2,x
+ 41A9                    .dbline 101
+ 41A9            L38:
+ 41A9                    .dbline 87
+ 41A9  EC1A              ldd -6,x
+ 41AB  8C0010            cpd #16
+ 41AE  26CD              bne L37
+ 41B0                    .dbline -2
+ 41B0                    .dbline 103
+ 41B0            ;               loop++;
+ 41B0            ;               andCounter=andCounter/2;
+ 41B0            ;       }
+ 41B0            ; 
+ 41B0            ; }
+ 41B0            L36:
+ 41B0  B757              tfr x,s
+ 41B2  30                pulx
+ 41B3  1B82              leas 2,sp
+ 41B5                    .dbline 0 ; func end
+ 41B5  3D                rts
+ 41B6                    .dbsym l constant -8 i
+ 41B6                    .dbsym l loop -6 I
+ 41B6                    .dbsym l temp -4 I
+ 41B6                    .dbsym l andCounter -2 i
+ 41B6                    .dbsym l hexValue 2 i
+ 41B6                    .dbend
+ 41B6                    .dbfunc e printInBinaryByte _printInBinaryByte fV
+ 41B6            ;       constant -> -8,x
+ 41B6            ;           loop -> -6,x
+ 41B6            ;           temp -> -4,x
+ 41B6            ;     andCounter -> -2,x
+ 41B6            ;      ByteValue -> 3,x
+ 41B6            _printInBinaryByte::
+ 41B6  3B                pshd
+ 41B7  34                pshx
+ 41B8  B775              tfr s,x
+ 41BA  1B98              leas -8,sp
+ 41BC                    .dbline -1
+ 41BC                    .dbline 105
+ 41BC            ; void printInBinaryByte(char ByteValue)
+ 41BC            ; {     
+ 41BC                    .dbline 107
+ 41BC            ; 
+ 41BC            ;       int andCounter=128;
+ 41BC  CC0080            ldd #128
+ 41BF  6C1E              std -2,x
+ 41C1                    .dbline 108
+ 41C1            ;       int constant=ByteValue;
+ 41C1  E603              ldab 3,x
+ 41C3  87                clra
+ 41C4  6C18              std -8,x
+ 41C6                    .dbline 109
+ 41C6            ;       int temp=0;
+ 41C6  CC0000            ldd #0
+ 41C9  6C1C              std -4,x
+ 41CB                    .dbline 110
+ 41CB            ;       int loop=0;
+ 41CB  CC0000            ldd #0
+ 41CE  6C1A              std -6,x
+ 41D0  2034              bra L46
+ 41D2            L45:
+ 41D2                    .dbline 112
+ 41D2            ;       while (loop!=8)
+ 41D2            ;       {
+ 41D2                    .dbline 113
+ 41D2            ;               temp=constant;
+ 41D2  1802181C          movw -8,x,-4,x
+ 41D6                    .dbline 114
+ 41D6            ;               temp=temp & andCounter;
+ 41D6  EC1C              ldd -4,x
+ 41D8  A41E              anda -2,x
+ 41DA  E41F              andb -1,x
+ 41DC  6C1C              std -4,x
+ 41DE                    .dbline 115
+ 41DE            ;               if(temp==andCounter)
+ 41DE  EC1C              ldd -4,x
+ 41E0  AC1E              cpd -2,x
+ 41E2  2608              bne L48
+ 41E4                    .dbline 116
+ 41E4            ;               {
+ 41E4                    .dbline 117
+ 41E4            ;                       printf("1");
+ 41E4  CC4215            ldd #L42
+ 41E7  164751            jsr _printf
+ 41EA                    .dbline 118
+ 41EA            ;               }
+ 41EA  2006              bra L49
+ 41EC            L48:
+ 41EC                    .dbline 120
+ 41EC            ;               else
+ 41EC            ;               {
+ 41EC                    .dbline 121
+ 41EC            ;                       printf("0");
+ 41EC  CC4213            ldd #L43
+ 41EF  164751            jsr _printf
+ 41F2                    .dbline 122
+ 41F2            ;                       }
+ 41F2            L49:
+ 41F2                    .dbline 123
+ 41F2  EC1A              ldd -6,x
+ 41F4  C30001            addd #1
+ 41F7  6C1A              std -6,x
+ 41F9                    .dbline 124
+ 41F9  EC1E              ldd -2,x
+ 41FB  CD0002            ldy #2
+ 41FE  B7D6              exg x,y
+ 4200  1815              idivs
+ 4202  B7D6              exg x,y
+ 4204  6D1E              sty -2,x
+ 4206                    .dbline 125
+ 4206            L46:
+ 4206                    .dbline 111
+ 4206  EC1A              ldd -6,x
+ 4208  8C0008            cpd #8
+ 420B  26C5              bne L45
+ 420D                    .dbline -2
+ 420D                    .dbline 127
+ 420D            ;               loop++;
+ 420D            ;               andCounter=andCounter/2;
+ 420D            ;       }
+ 420D            ; 
+ 420D            ; }
+ 420D            L44:
+ 420D  B757              tfr x,s
+ 420F  30                pulx
+ 4210  1B82              leas 2,sp
+ 4212                    .dbline 0 ; func end
+ 4212  3D                rts
+ 4213                    .dbsym l constant -8 I
+ 4213                    .dbsym l loop -6 I
+ 4213                    .dbsym l temp -4 I
+ 4213                    .dbsym l andCounter -2 I
+ 4213                    .dbsym l ByteValue 2 I
+ 4213                    .dbsym l ByteValue 3 c
+ 4213                    .dbend
+ 4213            L43:
+ 4213  3000              .byte 48,0
+ 4215            L42:
+ 4215  3100              .byte 49,0
+ 4217            L35:
+ 4217  6B657973507265737365643A2000      .byte 'k,'e,'y,'s,'P,'r,'e,'s,'s,'e,'d,58,32,0
+ 4225            L34:
+ 4225  446972656374696F6E20536F75746857  .byte 'D,'i,'r,'e,'c,'t,'i,'o,'n,32,'S,'o,'u,'t,'h,'W
+ 4235  6573742100        .byte 'e,'s,'t,33,0
+ 423A            L31:
+ 423A  446972656374696F6E20536F75746845  .byte 'D,'i,'r,'e,'c,'t,'i,'o,'n,32,'S,'o,'u,'t,'h,'E
+ 424A  6173742100        .byte 'a,'s,'t,33,0
+ 424F            L28:
+ 424F  446972656374696F6E204E6F72746857  .byte 'D,'i,'r,'e,'c,'t,'i,'o,'n,32,'N,'o,'r,'t,'h,'W
+ 425F  6573742100        .byte 'e,'s,'t,33,0
+ 4264            L25:
+ 4264  446972656374696F6E204E6F72746845  .byte 'D,'i,'r,'e,'c,'t,'i,'o,'n,32,'N,'o,'r,'t,'h,'E
+ 4274  6173742100        .byte 'a,'s,'t,33,0
+ 4279            L22:
+ 4279  446972656374696F6E20576573742100  .byte 'D,'i,'r,'e,'c,'t,'i,'o,'n,32,'W,'e,'s,'t,33,0
+ 4289            L19:
+ 4289  446972656374696F6E20456173742100  .byte 'D,'i,'r,'e,'c,'t,'i,'o,'n,32,'E,'a,'s,'t,33,0
+ 4299            L16:
+ 4299  446972656374696F6E20536F75746821  .byte 'D,'i,'r,'e,'c,'t,'i,'o,'n,32,'S,'o,'u,'t,'h,33
+ 42A9  00                .byte 0
+ 42AA            L13:
+ 42AA  446972656374696F6E204E6F72746821  .byte 'D,'i,'r,'e,'c,'t,'i,'o,'n,32,'N,'o,'r,'t,'h,33
+ 42BA  00                .byte 0
+ 42BB            L10:
+ 42BB  204E6F6F20626A656374206465746563  .byte 32,'N,'o,'o,32,'b,'j,'e,'c,'t,32,'d,'e,'t,'e,'c
+ 42CB  746564210A00      .byte 't,'e,'d,33,10,0
+ 42D1            L9:
+ 42D1  4F626A65637420646574656374656421  .byte 'O,'b,'j,'e,'c,'t,32,'d,'e,'t,'e,'c,'t,'e,'d,33
+ 42E1  0A00              .byte 10,0
+ 42E3            L6:
+ 42E3  54656D70657261747572653A202000    .byte 'T,'e,'m,'p,'e,'r,'a,'t,'u,'r,'e,58,32,32,0
+ 42F2            L5:
+ 42F2  53706565643A202000        .byte 'S,'p,'e,'e,'d,58,32,32,0
+ 42FB            L3:
+ 42FB  25690A00          .byte 37,'i,10,0
+ 42FF            L2:
+ 42FF  0A00              .byte 10,0

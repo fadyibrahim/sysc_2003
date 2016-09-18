@@ -1,0 +1,48 @@
+#include "hcs12dp256.h"
+#include <stdio.h>
+#include "vectors_dp256_NoICE2.c"
+
+#pragma interrupt_handler tempINT()
+void tempINT(void);
+
+int temper;
+int ready=1;
+
+void main(void)
+{
+SPI1CR1=0;
+DDRM=0x80;
+ATD0CTL2=0xFA;
+ATD0CTL3=0x00;
+ATD0CTL4=0x60;
+ATD0CTL5=0x86;
+asm("cli");
+while (1==1)
+{
+
+if (temper<=100 && ready==1)
+{
+PTM|=0x80;
+}
+else
+{
+ready=0;
+PTM=0x00;
+}
+printf("Temp= %d \n",temper);
+}
+
+}
+
+void tempINT(void)
+{
+int tempT;
+int i;
+tempT=ATD0DR6H<<8;
+tempT&=0x03FF;
+tempT+=ATD0DR6L;
+tempT=tempT/8;
+tempT=tempT-5;
+temper=tempT;
+ATD0CTL5=0x86;
+}

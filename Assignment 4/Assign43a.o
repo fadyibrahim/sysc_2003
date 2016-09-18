@@ -1,0 +1,143 @@
+XH
+H 3 areas 5 global symbols
+M Assign43a.C
+A text size 8D flags 0
+dbfile Assign43a.C
+dbfunc e delay 0 fV
+dbline FFFFFFFF 0
+dbline C 0
+dbline D 0
+dbline D 6
+dbline E 6
+dbline D 6
+dbline D F
+dbline FFFFFFFE 17
+dbline F 17
+dbline 0 17
+dbfunc e main 18 fI
+dbline FFFFFFFF 18
+dbline 11 18
+dbline 14 18
+dbline 15 1D
+dbline 16 22
+dbline 18 29
+dbline 19 29
+dbline 1A 2E
+dbline 1B 31
+dbline 1C 36
+dbline 1D 39
+dbline 1E 3C
+dbline 1F 3F
+dbline 20 44
+dbline 21 47
+dbline 22 50
+dbline 18 50
+dbline 23 5A
+dbline 24 5A
+dbline 25 5F
+dbline 26 62
+dbline 27 65
+dbline 28 68
+dbline 29 6D
+dbline 2A 70
+dbline 2B 75
+dbline 2C 78
+dbline 2D 81
+dbline 23 81
+dbline 2F 89
+dbline FFFFFFFE 8C
+dbline 0 8C
+dbfile Assign43a.s
+dbfunc 0 ? 0 I
+dbline 2B 0
+dbline 2C 3
+dbline 33 6
+dbline 34 9
+dbline 35 C
+dbline 37 F
+dbline 38 12
+dbline 39 15
+dbline 40 17
+dbline 4C 18
+dbline 4D 1A
+dbline 50 1D
+dbline 51 1F
+dbline 54 22
+dbline 55 24
+dbline 56 27
+dbline 5A 29
+dbline 5B 2B
+dbline 5D 2E
+dbline 5F 31
+dbline 60 33
+dbline 62 36
+dbline 64 39
+dbline 66 3C
+dbline 68 3F
+dbline 69 41
+dbline 6B 44
+dbline 6D 47
+dbline 6E 4A
+dbline 6F 4D
+dbline 75 50
+dbline 76 53
+dbline 77 56
+dbline 78 58
+dbline 7C 5A
+dbline 7D 5C
+dbline 7F 5F
+dbline 81 62
+dbline 83 65
+dbline 85 68
+dbline 86 6A
+dbline 88 6D
+dbline 8A 70
+dbline 8B 72
+dbline 8D 75
+dbline 8F 78
+dbline 90 7B
+dbline 91 7E
+dbline A0 81
+dbline A1 84
+dbline A2 87
+dbline B0 89
+dbline B4 8C
+S _main Def0018
+S _delay Def0000
+A data size 6 flags 0
+dbfile Assign43a.C
+dbsym e i 0 I
+dbsym e counterClockwise 2 I
+dbsym e clockwise 4 I
+S _counterClockwise Def0002
+S _clockwise Def0004
+S _i Def0000
+A idata size 6 flags 0
+T 00 00 00 00
+R 00 00 00 02
+T 00 02 00 00
+R 00 00 00 02
+T 00 04 00 00
+R 00 00 00 02
+T 00 00 CC 00 00 7C 00 00 FC 00 00 C3 00 01 7C
+R 00 00 00 00 00 06 00 01 00 09 00 01
+T 00 0D 00 00 FC 00 00 8C 27 10 2D EF 3D C6 F0 7B
+R 00 00 00 00 00 02 00 01 00 05 00 01
+T 00 1B 02 5A C6 20 7B 02 58 C6 F0 7B 02 42 20 27
+R 00 00 00 00
+T 00 29 C6 60 7B 02 40 16 00 00 C6 40 7B 02 40 16
+R 00 00 00 00 00 08 00 00
+T 00 37 00 00 79 02 40 16 00 00 C6 20 7B 02 40 16
+R 00 00 00 00 00 02 00 00 00 08 00 00
+T 00 45 00 00 FC 00 04 C3 00 01 7C 00 04 FC
+R 00 00 00 00 00 02 00 00 00 05 00 01 00 0B 00 01
+T 00 51 00 04 8C 00 0A 2F D1 20 27 C6 20 7B 02 40
+R 00 00 00 00 00 02 00 01
+T 00 5F 16 00 00 79 02 40 16 00 00 C6 40 7B 02 40
+R 00 00 00 00 00 03 00 00 00 09 00 00
+T 00 6D 16 00 00 C6 60 7B 02 40 16 00 00 FC 00 02
+R 00 00 00 00 00 03 00 00 00 0B 00 00 00 0E 00 01
+T 00 7B C3 00 01 7C 00 02 FC 00 02 8C 00 0A 2F D1
+R 00 00 00 00 00 06 00 01 00 09 00 01
+T 00 89 CC 00 00 3D
+R 00 00 00 00

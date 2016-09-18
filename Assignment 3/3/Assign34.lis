@@ -1,0 +1,693 @@
+                        .module Assign34.c
+                        .area text
+ 0000                   .dbfile Assign34.c
+ 0000                   .dbfunc e main _main fI
+ 0000           ;     boolDetect -> -5,x
+ 0000           ;      proximity -> -3,x
+ 0000           ;          speed -> -1,x
+ 0000           _main::
+ 0000 34                pshx
+ 0001 B775              tfr s,x
+ 0003 1B98              leas -8,sp
+ 0005                   .dbline -1
+ 0005                   .dbline 6
+ 0005           ; #include <stdio.h>
+ 0005           ; int collision_detection (char *speed, unsigned int *proximity);
+ 0005           ; void printInBinaryByte(char ByteValue);
+ 0005           ; void printInBinaryWord(unsigned int hexValue);
+ 0005           ; int main(void)
+ 0005           ; {
+ 0005                   .dbline 7
+ 0005           ;       char speed=0x30;
+ 0005 C630              ldab #48
+ 0007 6B1F              stab -1,x
+ 0009                   .dbline 8
+ 0009           ;       unsigned int proximity=0x8330;
+ 0009 CC8330            ldd #0x8330
+ 000C 6C1D              std -3,x
+ 000E                   .dbline 10
+ 000E           ;       int boolDetect;
+ 000E           ;       printf("speed:  ");
+ 000E CC02FB            ldd #L2
+ 0011 160000            jsr _printf
+ 0014                   .dbline 11
+ 0014           ;       printInBinaryByte(speed);
+ 0014 E61F              ldab -1,x
+ 0016 87                clra
+ 0017 16028B            jsr _printInBinaryByte
+ 001A                   .dbline 12
+ 001A           ;       printf("\n");
+ 001A CC02F9            ldd #L3
+ 001D 160000            jsr _printf
+ 0020                   .dbline 13
+ 0020           ;       printf("proximity:  ");
+ 0020 CC02EC            ldd #L4
+ 0023 160000            jsr _printf
+ 0026                   .dbline 14
+ 0026           ;       printInBinaryWord(proximity);
+ 0026 EC1D              ldd -3,x
+ 0028 16022F            jsr _printInBinaryWord
+ 002B                   .dbline 15
+ 002B           ;       printf("\n");
+ 002B CC02F9            ldd #L3
+ 002E 160000            jsr _printf
+ 0031                   .dbline 16
+ 0031           ;       boolDetect=collision_detection(&speed,&proximity);
+ 0031 191D              leay -3,x
+ 0033 6D80              sty 0,sp
+ 0035 191F              leay -1,x
+ 0037 B7C6              xgdy
+ 0039 16018B            jsr _collision_detection
+ 003C 6C1B              std -5,x
+ 003E                   .dbline 17
+ 003E           ;       printf("speed:  ");
+ 003E CC02FB            ldd #L2
+ 0041 160000            jsr _printf
+ 0044                   .dbline 18
+ 0044           ;       printInBinaryByte(speed);
+ 0044 E61F              ldab -1,x
+ 0046 87                clra
+ 0047 16028B            jsr _printInBinaryByte
+ 004A                   .dbline 19
+ 004A           ;       printf("\n");
+ 004A CC02F9            ldd #L3
+ 004D 160000            jsr _printf
+ 0050                   .dbline 20
+ 0050           ;       printf("proximity:  ");
+ 0050 CC02EC            ldd #L4
+ 0053 160000            jsr _printf
+ 0056                   .dbline 21
+ 0056           ;       printInBinaryWord(proximity);
+ 0056 EC1D              ldd -3,x
+ 0058 16022F            jsr _printInBinaryWord
+ 005B                   .dbline 22
+ 005B           ;       printf("\n");
+ 005B CC02F9            ldd #L3
+ 005E 160000            jsr _printf
+ 0061                   .dbline 23
+ 0061           ;       printf("\n");
+ 0061 CC02F9            ldd #L3
+ 0064 160000            jsr _printf
+ 0067                   .dbline 25
+ 0067           ; 
+ 0067           ;       speed=0x30;
+ 0067 C630              ldab #48
+ 0069 6B1F              stab -1,x
+ 006B                   .dbline 26
+ 006B           ;       proximity=0x1320;
+ 006B CC1320            ldd #4896
+ 006E 6C1D              std -3,x
+ 0070                   .dbline 27
+ 0070           ;       printf("speed:  ");
+ 0070 CC02FB            ldd #L2
+ 0073 160000            jsr _printf
+ 0076                   .dbline 28
+ 0076           ;       printInBinaryByte(speed);
+ 0076 E61F              ldab -1,x
+ 0078 87                clra
+ 0079 16028B            jsr _printInBinaryByte
+ 007C                   .dbline 29
+ 007C           ;       printf("\n");
+ 007C CC02F9            ldd #L3
+ 007F 160000            jsr _printf
+ 0082                   .dbline 30
+ 0082           ;       printf("proximity:  ");
+ 0082 CC02EC            ldd #L4
+ 0085 160000            jsr _printf
+ 0088                   .dbline 31
+ 0088           ;       printInBinaryWord(proximity);
+ 0088 EC1D              ldd -3,x
+ 008A 16022F            jsr _printInBinaryWord
+ 008D                   .dbline 32
+ 008D           ;       printf("\n");
+ 008D CC02F9            ldd #L3
+ 0090 160000            jsr _printf
+ 0093                   .dbline 33
+ 0093           ;       boolDetect=collision_detection(&speed,&proximity);
+ 0093 191D              leay -3,x
+ 0095 6D80              sty 0,sp
+ 0097 191F              leay -1,x
+ 0099 B7C6              xgdy
+ 009B 16018B            jsr _collision_detection
+ 009E 6C1B              std -5,x
+ 00A0                   .dbline 34
+ 00A0           ;       printf("speed:  ");
+ 00A0 CC02FB            ldd #L2
+ 00A3 160000            jsr _printf
+ 00A6                   .dbline 35
+ 00A6           ;       printInBinaryByte(speed);
+ 00A6 E61F              ldab -1,x
+ 00A8 87                clra
+ 00A9 16028B            jsr _printInBinaryByte
+ 00AC                   .dbline 36
+ 00AC           ;       printf("\n");
+ 00AC CC02F9            ldd #L3
+ 00AF 160000            jsr _printf
+ 00B2                   .dbline 37
+ 00B2           ;       printf("proximity:  ");
+ 00B2 CC02EC            ldd #L4
+ 00B5 160000            jsr _printf
+ 00B8                   .dbline 38
+ 00B8           ;       printInBinaryWord(proximity);
+ 00B8 EC1D              ldd -3,x
+ 00BA 16022F            jsr _printInBinaryWord
+ 00BD                   .dbline 39
+ 00BD           ;       printf("\n");
+ 00BD CC02F9            ldd #L3
+ 00C0 160000            jsr _printf
+ 00C3                   .dbline 40
+ 00C3           ;       printf("\n");
+ 00C3 CC02F9            ldd #L3
+ 00C6 160000            jsr _printf
+ 00C9                   .dbline 42
+ 00C9           ; 
+ 00C9           ;       speed=0x30;
+ 00C9 C630              ldab #48
+ 00CB 6B1F              stab -1,x
+ 00CD                   .dbline 43
+ 00CD           ;       proximity=0x8327;
+ 00CD CC8327            ldd #0x8327
+ 00D0 6C1D              std -3,x
+ 00D2                   .dbline 44
+ 00D2           ;       printf("speed:  ");
+ 00D2 CC02FB            ldd #L2
+ 00D5 160000            jsr _printf
+ 00D8                   .dbline 45
+ 00D8           ;       printInBinaryByte(speed);
+ 00D8 E61F              ldab -1,x
+ 00DA 87                clra
+ 00DB 16028B            jsr _printInBinaryByte
+ 00DE                   .dbline 46
+ 00DE           ;       printf("\n");
+ 00DE CC02F9            ldd #L3
+ 00E1 160000            jsr _printf
+ 00E4                   .dbline 47
+ 00E4           ;       printf("proximity:  ");
+ 00E4 CC02EC            ldd #L4
+ 00E7 160000            jsr _printf
+ 00EA                   .dbline 48
+ 00EA           ;       printInBinaryWord(proximity);
+ 00EA EC1D              ldd -3,x
+ 00EC 16022F            jsr _printInBinaryWord
+ 00EF                   .dbline 49
+ 00EF           ;       printf("\n");
+ 00EF CC02F9            ldd #L3
+ 00F2 160000            jsr _printf
+ 00F5                   .dbline 50
+ 00F5           ;       boolDetect=collision_detection(&speed,&proximity);
+ 00F5 191D              leay -3,x
+ 00F7 6D80              sty 0,sp
+ 00F9 191F              leay -1,x
+ 00FB B7C6              xgdy
+ 00FD 16018B            jsr _collision_detection
+ 0100 6C1B              std -5,x
+ 0102                   .dbline 51
+ 0102           ;       printf("speed:  ");
+ 0102 CC02FB            ldd #L2
+ 0105 160000            jsr _printf
+ 0108                   .dbline 52
+ 0108           ;       printInBinaryByte(speed);
+ 0108 E61F              ldab -1,x
+ 010A 87                clra
+ 010B 16028B            jsr _printInBinaryByte
+ 010E                   .dbline 53
+ 010E           ;       printf("\n");
+ 010E CC02F9            ldd #L3
+ 0111 160000            jsr _printf
+ 0114                   .dbline 54
+ 0114           ;       printf("proximity:  ");
+ 0114 CC02EC            ldd #L4
+ 0117 160000            jsr _printf
+ 011A                   .dbline 55
+ 011A           ;       printInBinaryWord(proximity);
+ 011A EC1D              ldd -3,x
+ 011C 16022F            jsr _printInBinaryWord
+ 011F                   .dbline 56
+ 011F           ;       printf("\n");
+ 011F CC02F9            ldd #L3
+ 0122 160000            jsr _printf
+ 0125                   .dbline 57
+ 0125           ;       printf("\n");
+ 0125 CC02F9            ldd #L3
+ 0128 160000            jsr _printf
+ 012B                   .dbline 59
+ 012B           ; 
+ 012B           ;       speed=0x30;
+ 012B C630              ldab #48
+ 012D 6B1F              stab -1,x
+ 012F                   .dbline 60
+ 012F           ;       proximity=0x8323;
+ 012F CC8323            ldd #0x8323
+ 0132 6C1D              std -3,x
+ 0134                   .dbline 61
+ 0134           ;       printf("speed:  ");
+ 0134 CC02FB            ldd #L2
+ 0137 160000            jsr _printf
+ 013A                   .dbline 62
+ 013A           ;       printInBinaryByte(speed);
+ 013A E61F              ldab -1,x
+ 013C 87                clra
+ 013D 16028B            jsr _printInBinaryByte
+ 0140                   .dbline 63
+ 0140           ;       printf("\n");
+ 0140 CC02F9            ldd #L3
+ 0143 160000            jsr _printf
+ 0146                   .dbline 64
+ 0146           ;       printf("proximity:  ");
+ 0146 CC02EC            ldd #L4
+ 0149 160000            jsr _printf
+ 014C                   .dbline 65
+ 014C           ;       printInBinaryWord(proximity);
+ 014C EC1D              ldd -3,x
+ 014E 16022F            jsr _printInBinaryWord
+ 0151                   .dbline 66
+ 0151           ;       printf("\n");
+ 0151 CC02F9            ldd #L3
+ 0154 160000            jsr _printf
+ 0157                   .dbline 67
+ 0157           ;       boolDetect=collision_detection(&speed,&proximity);
+ 0157 191D              leay -3,x
+ 0159 6D80              sty 0,sp
+ 015B 191F              leay -1,x
+ 015D B7C6              xgdy
+ 015F 16018B            jsr _collision_detection
+ 0162 6C1B              std -5,x
+ 0164                   .dbline 68
+ 0164           ;       printf("speed:  ");
+ 0164 CC02FB            ldd #L2
+ 0167 160000            jsr _printf
+ 016A                   .dbline 69
+ 016A           ;       printInBinaryByte(speed);
+ 016A E61F              ldab -1,x
+ 016C 87                clra
+ 016D 16028B            jsr _printInBinaryByte
+ 0170                   .dbline 70
+ 0170           ;       printf("\n");
+ 0170 CC02F9            ldd #L3
+ 0173 160000            jsr _printf
+ 0176                   .dbline 71
+ 0176           ;       printf("proximity:  ");
+ 0176 CC02EC            ldd #L4
+ 0179 160000            jsr _printf
+ 017C                   .dbline 72
+ 017C           ;       printInBinaryWord(proximity);
+ 017C EC1D              ldd -3,x
+ 017E 16022F            jsr _printInBinaryWord
+ 0181                   .dbline 73
+ 0181           ;       printf("\n");
+ 0181 CC02F9            ldd #L3
+ 0184 160000            jsr _printf
+ 0187                   .dbline -2
+ 0187                   .dbline 74
+ 0187           ; }
+ 0187           L1:
+ 0187 B757              tfr x,s
+ 0189 30                pulx
+ 018A                   .dbline 0 ; func end
+ 018A 3D                rts
+ 018B                   .dbsym l boolDetect -5 I
+ 018B                   .dbsym l proximity -3 i
+ 018B                   .dbsym l speed -1 c
+ 018B                   .dbend
+ 018B                   .dbfunc e collision_detection _collision_detection fI
+ 018B           ;           prox -> -4,x
+ 018B           ;   objectDetect -> -2,x
+ 018B           ;      proximity -> 6,x
+ 018B           ;          speed -> 2,x
+ 018B           _collision_detection::
+ 018B 3B                pshd
+ 018C 34                pshx
+ 018D B775              tfr s,x
+ 018F 1B9C              leas -4,sp
+ 0191                   .dbline -1
+ 0191                   .dbline 77
+ 0191           ; 
+ 0191           ; int collision_detection (char *speed, unsigned int *proximity)
+ 0191           ; {
+ 0191                   .dbline 78
+ 0191           ;       unsigned int prox=*proximity;
+ 0191 ECE30006          ldd [6,x]
+ 0195 6C1C              std -4,x
+ 0197                   .dbline 79
+ 0197           ;       unsigned int objectDetect=*proximity;
+ 0197 ECE30006          ldd [6,x]
+ 019B 6C1E              std -2,x
+ 019D                   .dbline 80
+ 019D           ;       objectDetect=objectDetect>>15;
+ 019D EC1E              ldd -2,x
+ 019F CD000F            ldy #15
+ 01A2 8D0000            cpy #0
+ 01A5 2704              beq X0
+ 01A7           X1:
+ 01A7 49                lsrd
+ 01A8 0436FC            dbne y,X1
+ 01AB           X0:
+ 01AB 6C1E              std -2,x
+ 01AD                   .dbline 81
+ 01AD           ;       if(objectDetect==1)
+ 01AD EC1E              ldd -2,x
+ 01AF 8C0001            cpd #1
+ 01B2 18260066          lbne L6
+ 01B6                   .dbline 82
+ 01B6           ;       {
+ 01B6                   .dbline 83
+ 01B6           ;               prox = prox & 0x0007;
+ 01B6 0D1DF8            bclr -3,x,#0xf8
+ 01B9 0D1CFF            bclr -4,x,#0xff
+ 01BC                   .dbline 84
+ 01BC           ;               if(prox==0 || prox==4)
+ 01BC EC1C              ldd -4,x
+ 01BE 2707              beq L10
+ 01C0 EC1C              ldd -4,x
+ 01C2 8C0004            cpd #4
+ 01C5 2617              bne L8
+ 01C7           L10:
+ 01C7                   .dbline 85
+ 01C7           ;               {
+ 01C7                   .dbline 86
+ 01C7           ;                       *proximity=*proximity | 0x0200;
+ 01C7 ED06              ldy 6,x
+ 01C9 35                pshy ; spill
+ 01CA ED06              ldy 6,x
+ 01CC 31                puly ; reload
+ 01CD 0C4002            bset 0,y,#0x2
+ 01D0                   .dbline 87
+ 01D0           ;                       *proximity=*proximity & 0xFEFF;
+ 01D0 ED06              ldy 6,x
+ 01D2 35                pshy ; spill
+ 01D3 ED06              ldy 6,x
+ 01D5 31                puly ; reload
+ 01D6 0D4001            bclr 0,y,#0x1
+ 01D9                   .dbline 88
+ 01D9           ;                       return 1;
+ 01D9 CC0001            ldd #1
+ 01DC 204B              bra L5
+ 01DE           L8:
+ 01DE                   .dbline 90
+ 01DE           ;               }
+ 01DE           ;               else if(prox==2 || prox==7)
+ 01DE EC1C              ldd -4,x
+ 01E0 8C0002            cpd #2
+ 01E3 2707              beq L13
+ 01E5 EC1C              ldd -4,x
+ 01E7 8C0007            cpd #7
+ 01EA 2617              bne L11
+ 01EC           L13:
+ 01EC                   .dbline 91
+ 01EC           ;               {
+ 01EC                   .dbline 92
+ 01EC           ;                       *proximity=*proximity | 0x0100;
+ 01EC ED06              ldy 6,x
+ 01EE 35                pshy ; spill
+ 01EF ED06              ldy 6,x
+ 01F1 31                puly ; reload
+ 01F2 0C4001            bset 0,y,#0x1
+ 01F5                   .dbline 93
+ 01F5           ;                       *proximity=*proximity & 0xFDFF;
+ 01F5 ED06              ldy 6,x
+ 01F7 35                pshy ; spill
+ 01F8 ED06              ldy 6,x
+ 01FA 31                puly ; reload
+ 01FB 0D4002            bclr 0,y,#0x2
+ 01FE                   .dbline 94
+ 01FE           ;                       return 1;
+ 01FE CC0001            ldd #1
+ 0201 2026              bra L5
+ 0203           L11:
+ 0203                   .dbline 96
+ 0203           ;               }
+ 0203           ;               else{
+ 0203                   .dbline 97
+ 0203           ;               *speed=*speed/8;
+ 0203 ED02              ldy 2,x
+ 0205 E640              ldab 0,y
+ 0207 87                clra
+ 0208 CD0008            ldy #8
+ 020B B7D6              exg x,y
+ 020D 1815              idivs
+ 020F B7D6              exg x,y
+ 0211 B7C6              xgdy
+ 0213 ED02              ldy 2,x
+ 0215 6B40              stab 0,y
+ 0217                   .dbline 99
+ 0217           ; 
+ 0217           ;               return 1;
+ 0217 CC0001            ldd #1
+ 021A 200D              bra L5
+ 021C           L6:
+ 021C                   .dbline 103
+ 021C           ;               }
+ 021C           ; 
+ 021C           ;       }
+ 021C           ;       else{
+ 021C                   .dbline 104
+ 021C           ;       *speed=*speed*2;
+ 021C ED02              ldy 2,x
+ 021E E640              ldab 0,y
+ 0220 87                clra
+ 0221 59                lsld
+ 0222 ED02              ldy 2,x
+ 0224 6B40              stab 0,y
+ 0226                   .dbline 105
+ 0226           ;       return 0;
+ 0226 CC0000            ldd #0
+ 0229                   .dbline -2
+ 0229           L5:
+ 0229 B757              tfr x,s
+ 022B 30                pulx
+ 022C 1B82              leas 2,sp
+ 022E                   .dbline 0 ; func end
+ 022E 3D                rts
+ 022F                   .dbsym l prox -4 i
+ 022F                   .dbsym l objectDetect -2 i
+ 022F                   .dbsym l proximity 6 pi
+ 022F                   .dbsym l speed 2 pc
+ 022F                   .dbend
+ 022F                   .dbfunc e printInBinaryWord _printInBinaryWord fV
+ 022F           ;       constant -> -8,x
+ 022F           ;           loop -> -6,x
+ 022F           ;           temp -> -4,x
+ 022F           ;     andCounter -> -2,x
+ 022F           ;       hexValue -> 2,x
+ 022F           _printInBinaryWord::
+ 022F 3B                pshd
+ 0230 34                pshx
+ 0231 B775              tfr s,x
+ 0233 1B98              leas -8,sp
+ 0235                   .dbline -1
+ 0235                   .dbline 109
+ 0235           ;       }
+ 0235           ; }
+ 0235           ; void printInBinaryWord(unsigned int hexValue)
+ 0235           ; {     
+ 0235                   .dbline 111
+ 0235           ; 
+ 0235           ;       int andCounter=32768;
+ 0235 CC8000            ldd #0x8000
+ 0238 6C1E              std -2,x
+ 023A                   .dbline 112
+ 023A           ;       int constant=hexValue;
+ 023A EC02              ldd 2,x
+ 023C 6C18              std -8,x
+ 023E                   .dbline 113
+ 023E           ;       int temp=0;
+ 023E CC0000            ldd #0
+ 0241 6C1C              std -4,x
+ 0243                   .dbline 114
+ 0243           ;       int loop=0;
+ 0243 CC0000            ldd #0
+ 0246 6C1A              std -6,x
+ 0248 2034              bra L16
+ 024A           L15:
+ 024A                   .dbline 116
+ 024A           ;       while (loop!=16)
+ 024A           ;       {
+ 024A                   .dbline 117
+ 024A           ;               temp=constant;
+ 024A 1802181C          movw -8,x,-4,x
+ 024E                   .dbline 118
+ 024E           ;               temp=temp & andCounter;
+ 024E EC1C              ldd -4,x
+ 0250 A41E              anda -2,x
+ 0252 E41F              andb -1,x
+ 0254 6C1C              std -4,x
+ 0256                   .dbline 119
+ 0256           ;               if(temp==andCounter)
+ 0256 EC1C              ldd -4,x
+ 0258 AC1E              cpd -2,x
+ 025A 2608              bne L18
+ 025C                   .dbline 120
+ 025C           ;               {
+ 025C                   .dbline 121
+ 025C           ;                       printf("1");
+ 025C CC02EA            ldd #L20
+ 025F 160000            jsr _printf
+ 0262                   .dbline 122
+ 0262           ;               }
+ 0262 2006              bra L19
+ 0264           L18:
+ 0264                   .dbline 124
+ 0264           ;               else
+ 0264           ;               {
+ 0264                   .dbline 125
+ 0264           ;                       printf("0");
+ 0264 CC02E8            ldd #L21
+ 0267 160000            jsr _printf
+ 026A                   .dbline 126
+ 026A           ;                       }
+ 026A           L19:
+ 026A                   .dbline 127
+ 026A EC1A              ldd -6,x
+ 026C C30001            addd #1
+ 026F 6C1A              std -6,x
+ 0271                   .dbline 128
+ 0271 EC1E              ldd -2,x
+ 0273 CD0002            ldy #2
+ 0276 B7D6              exg x,y
+ 0278 1815              idivs
+ 027A B7D6              exg x,y
+ 027C 6D1E              sty -2,x
+ 027E                   .dbline 129
+ 027E           L16:
+ 027E                   .dbline 115
+ 027E EC1A              ldd -6,x
+ 0280 8C0010            cpd #16
+ 0283 26C5              bne L15
+ 0285                   .dbline -2
+ 0285                   .dbline 131
+ 0285           ;               loop++;
+ 0285           ;               andCounter=andCounter/2;
+ 0285           ;       }
+ 0285           ; 
+ 0285           ; }
+ 0285           L14:
+ 0285 B757              tfr x,s
+ 0287 30                pulx
+ 0288 1B82              leas 2,sp
+ 028A                   .dbline 0 ; func end
+ 028A 3D                rts
+ 028B                   .dbsym l constant -8 I
+ 028B                   .dbsym l loop -6 I
+ 028B                   .dbsym l temp -4 I
+ 028B                   .dbsym l andCounter -2 I
+ 028B                   .dbsym l hexValue 2 i
+ 028B                   .dbend
+ 028B                   .dbfunc e printInBinaryByte _printInBinaryByte fV
+ 028B           ;       constant -> -8,x
+ 028B           ;           loop -> -6,x
+ 028B           ;           temp -> -4,x
+ 028B           ;     andCounter -> -2,x
+ 028B           ;      ByteValue -> 3,x
+ 028B           _printInBinaryByte::
+ 028B 3B                pshd
+ 028C 34                pshx
+ 028D B775              tfr s,x
+ 028F 1B98              leas -8,sp
+ 0291                   .dbline -1
+ 0291                   .dbline 133
+ 0291           ; void printInBinaryByte(char ByteValue)
+ 0291           ; {     
+ 0291                   .dbline 135
+ 0291           ; 
+ 0291           ;       int andCounter=128;
+ 0291 CC0080            ldd #128
+ 0294 6C1E              std -2,x
+ 0296                   .dbline 136
+ 0296           ;       int constant=ByteValue;
+ 0296 E603              ldab 3,x
+ 0298 87                clra
+ 0299 6C18              std -8,x
+ 029B                   .dbline 137
+ 029B           ;       int temp=0;
+ 029B CC0000            ldd #0
+ 029E 6C1C              std -4,x
+ 02A0                   .dbline 138
+ 02A0           ;       int loop=0;
+ 02A0 CC0000            ldd #0
+ 02A3 6C1A              std -6,x
+ 02A5 2034              bra L24
+ 02A7           L23:
+ 02A7                   .dbline 140
+ 02A7           ;       while (loop!=8)
+ 02A7           ;       {
+ 02A7                   .dbline 141
+ 02A7           ;               temp=constant;
+ 02A7 1802181C          movw -8,x,-4,x
+ 02AB                   .dbline 142
+ 02AB           ;               temp=temp & andCounter;
+ 02AB EC1C              ldd -4,x
+ 02AD A41E              anda -2,x
+ 02AF E41F              andb -1,x
+ 02B1 6C1C              std -4,x
+ 02B3                   .dbline 143
+ 02B3           ;               if(temp==andCounter)
+ 02B3 EC1C              ldd -4,x
+ 02B5 AC1E              cpd -2,x
+ 02B7 2608              bne L26
+ 02B9                   .dbline 144
+ 02B9           ;               {
+ 02B9                   .dbline 145
+ 02B9           ;                       printf("1");
+ 02B9 CC02EA            ldd #L20
+ 02BC 160000            jsr _printf
+ 02BF                   .dbline 146
+ 02BF           ;               }
+ 02BF 2006              bra L27
+ 02C1           L26:
+ 02C1                   .dbline 148
+ 02C1           ;               else
+ 02C1           ;               {
+ 02C1                   .dbline 149
+ 02C1           ;                       printf("0");
+ 02C1 CC02E8            ldd #L21
+ 02C4 160000            jsr _printf
+ 02C7                   .dbline 150
+ 02C7           ;                       }
+ 02C7           L27:
+ 02C7                   .dbline 151
+ 02C7 EC1A              ldd -6,x
+ 02C9 C30001            addd #1
+ 02CC 6C1A              std -6,x
+ 02CE                   .dbline 152
+ 02CE EC1E              ldd -2,x
+ 02D0 CD0002            ldy #2
+ 02D3 B7D6              exg x,y
+ 02D5 1815              idivs
+ 02D7 B7D6              exg x,y
+ 02D9 6D1E              sty -2,x
+ 02DB                   .dbline 153
+ 02DB           L24:
+ 02DB                   .dbline 139
+ 02DB EC1A              ldd -6,x
+ 02DD 8C0008            cpd #8
+ 02E0 26C5              bne L23
+ 02E2                   .dbline -2
+ 02E2                   .dbline 155
+ 02E2           ;               loop++;
+ 02E2           ;               andCounter=andCounter/2;
+ 02E2           ;       }
+ 02E2           ; 
+ 02E2           ; }
+ 02E2           L22:
+ 02E2 B757              tfr x,s
+ 02E4 30                pulx
+ 02E5 1B82              leas 2,sp
+ 02E7                   .dbline 0 ; func end
+ 02E7 3D                rts
+ 02E8                   .dbsym l constant -8 I
+ 02E8                   .dbsym l loop -6 I
+ 02E8                   .dbsym l temp -4 I
+ 02E8                   .dbsym l andCounter -2 I
+ 02E8                   .dbsym l ByteValue 2 I
+ 02E8                   .dbsym l ByteValue 3 c
+ 02E8                   .dbend
+ 02E8           L21:
+ 02E8 3000              .byte 48,0
+ 02EA           L20:
+ 02EA 3100              .byte 49,0
+ 02EC           L4:
+ 02EC 70726F78696D6974793A202000        .byte 'p,'r,'o,'x,'i,'m,'i,'t,'y,58,32,32,0
+ 02F9           L3:
+ 02F9 0A00              .byte 10,0
+ 02FB           L2:
+ 02FB 73706565643A202000        .byte 's,'p,'e,'e,'d,58,32,32,0

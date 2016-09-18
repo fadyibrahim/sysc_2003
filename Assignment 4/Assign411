@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include "hcs12dp256.h"
+
+
+void printKeysPressed();
+
+void main(){
+
+	 
+	 printKeysPressed();
+	 printf("The End");
+	
+}
+
+void printKeysPressed(){
+
+	int loop=0;
+	char keypressed=0;
+	int counter=1;
+	SPI1CR1=0x0000;
+	DDRP=0x0F;
+	DDRH=0x00;
+	while (loop==0)
+	{
+	PTM = 0x08;	  			   				
+	PTP=counter;
+	keypressed=PTH;
+	PTM &= 0x00;
+	keypressed &= 0xF0;
+	if (keypressed==0x80 && counter==1)
+	{
+	   printf(" Rotate left: 1" );
+	}
+	else if (keypressed==0x10 && counter==1)
+	{
+	   printf("Rotate right: A");
+	}
+	
+	}
+}

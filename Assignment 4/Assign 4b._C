@@ -1,0 +1,15 @@
+#include <stdio.h>
+#pragma interrupt_handler rtilSR
+
+void rtilSR()
+{
+printf("HI");
+} 
+void main()
+{
+RTICTL=0x40;
+CRGINT=0b10000000;
+asm("CLI");
+while(1);
+}
+

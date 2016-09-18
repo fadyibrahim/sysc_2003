@@ -1,0 +1,361 @@
+XH
+H 4 areas E global symbols
+M Assign43b.C
+S __fromfp1 Ref0000
+S __tofp1 Ref0000
+S __tofp2 Ref0000
+S __fpadd Ref0000
+S __fpcmp Ref0000
+S __start Ref0000
+S _printf Ref0000
+A text size 1E2 flags 0
+dbfile Assign43b.C
+dbfunc e main 0 fV
+dbline FFFFFFFF 0
+dbline E 0
+dbline F 0
+dbline 11 3
+dbline FFFFFFFE 6
+dbline 12 6
+dbline 0 6
+dbfunc e CollisionDetect 7 fV
+dbsym l clockwise FFFFFFFC D
+dbline FFFFFFFF C
+dbline 1A C
+dbline 1C C
+dbline 1D 14
+dbline 1E 14
+dbline 1F 1A
+dbline 20 1E
+dbline 21 1E
+dbline 22 26
+dbline 23 26
+dbline 25 31
+dbline 26 36
+dbline 27 3B
+dbline 29 42
+dbline 2A 42
+dbline 2B 47
+dbline 2C 4A
+dbline 2D 4F
+dbline 2E 52
+dbline 2F 57
+dbline 30 5A
+dbline 31 5D
+dbline 32 60
+dbline 33 73
+dbline 29 73
+dbline 34 83
+dbline 35 83
+dbline 36 8B
+dbline 37 8B
+dbline 38 91
+dbline 39 97
+dbline 3A 9B
+dbline 3B 9B
+dbline 3C 9F
+dbline FFFFFFFE A8
+dbline 3D A8
+dbline 0 AB
+dbfunc e delay AC fV
+dbsym l i FFFFFFFE I
+dbline FFFFFFFF B1
+dbline 3F B1
+dbline 40 B1
+dbline 41 B6
+dbline 41 BB
+dbline 42 BB
+dbline 41 BB
+dbline 41 C2
+dbline FFFFFFFE C9
+dbline 43 C9
+dbline 0 CC
+dbfunc e printKeysPressed CD fV
+dbsym l counter FFFFFFF9 I
+dbsym l loop FFFFFFFB I
+dbsym l keypressed FFFFFFFD c
+dbsym l i FFFFFFFE I
+dbline FFFFFFFF D2
+dbline 48 D2
+dbline 49 D2
+dbline 4A D7
+dbline 4B DC
+dbline 4C DE
+dbline 4E E3
+dbline 4F E9
+dbline 53 EE
+dbline 55 EE
+dbline 57 F3
+dbline 58 F6
+dbline 59 FB
+dbline 5A 103
+dbline 5B 103
+dbline 5C 107
+dbline 5D 107
+dbline 5E 10C
+dbline 5F 110
+dbline 60 116
+dbline 62 119
+dbline 63 126
+dbline 64 126
+dbline 65 12C
+dbline 66 131
+dbline 67 136
+dbline 68 138
+dbline 6B 138
+dbline 6B 13D
+dbline 6B 13D
+dbline 6B 144
+dbline 6E 14B
+dbline 52 14B
+dbline FFFFFFFE 14F
+dbline 70 14F
+dbline 0 152
+dbfile Assign43b.s
+dbfunc 0 ? 0 I
+dbline 68 0
+dbline 6C 3
+dbline 72 6
+dbline 77 7
+dbline 78 8
+dbline 79 A
+dbline 87 C
+dbline 88 F
+dbline 89 12
+dbline 8E 14
+dbline 8F 17
+dbline 92 1A
+dbline 98 1E
+dbline 99 21
+dbline 9A 24
+dbline 9F 26
+dbline A0 29
+dbline A1 2C
+dbline A2 2E
+dbline A6 31
+dbline A7 33
+dbline AA 36
+dbline AB 38
+dbline AE 3B
+dbline AF 3D
+dbline B0 40
+dbline B4 42
+dbline B5 44
+dbline B7 47
+dbline B9 4A
+dbline BA 4C
+dbline BC 4F
+dbline BE 52
+dbline BF 54
+dbline C1 57
+dbline C3 5A
+dbline C5 5D
+dbline C7 60
+dbline C8 62
+dbline C9 65
+dbline CA 68
+dbline CB 6B
+dbline CC 6E
+dbline CD 70
+dbline D3 73
+dbline D4 75
+dbline D5 78
+dbline D6 7B
+dbline D7 7E
+dbline D8 81
+dbline E8 83
+dbline E9 86
+dbline EA 89
+dbline EF 8B
+dbline F0 8E
+dbline F3 91
+dbline F4 94
+dbline F7 97
+dbline FD 9B
+dbline 100 9F
+dbline 101 A2
+dbline 102 A5
+dbline 107 A8
+dbline 108 AA
+dbline 10A AB
+dbline 110 AC
+dbline 111 AD
+dbline 112 AF
+dbline 119 B1
+dbline 11A B4
+dbline 11C B6
+dbline 11D B9
+dbline 124 BB
+dbline 125 BD
+dbline 126 C0
+dbline 128 C2
+dbline 129 C4
+dbline 12A C7
+dbline 130 C9
+dbline 131 CB
+dbline 133 CC
+dbline 13C CD
+dbline 13D CE
+dbline 13E D0
+dbline 148 D2
+dbline 149 D5
+dbline 14C D7
+dbline 14D DA
+dbline 150 DC
+dbline 153 DE
+dbline 154 E1
+dbline 158 E3
+dbline 159 E6
+dbline 15C E9
+dbline 15D EC
+dbline 167 EE
+dbline 168 F0
+dbline 16C F3
+dbline 16F F6
+dbline 170 F8
+dbline 173 FB
+dbline 174 FE
+dbline 175 101
+dbline 17A 103
+dbline 181 107
+dbline 182 10A
+dbline 185 10C
+dbline 188 110
+dbline 189 113
+dbline 18C 116
+dbline 190 119
+dbline 191 11B
+dbline 192 11D
+dbline 194 11F
+dbline 195 122
+dbline 196 124
+dbline 19B 126
+dbline 19C 129
+dbline 19F 12C
+dbline 1A0 12E
+dbline 1A3 131
+dbline 1A4 133
+dbline 1A7 136
+dbline 1AD 138
+dbline 1AE 13B
+dbline 1B3 13D
+dbline 1B4 13F
+dbline 1B5 142
+dbline 1B7 144
+dbline 1B8 146
+dbline 1B9 149
+dbline 1BD 14B
+dbline 1BE 14D
+dbline 1CA 14F
+dbline 1CB 151
+dbline 1CD 152
+S _main Def0000
+S _CollisionDetect Def0007
+S _delay Def00AC
+S _printKeysPressed Def00CD
+A memory size 4000 flags C
+dbfile M:\Sysc
+dbsym e interrupt_vectors 3F8C A[116:58]pfV
+S _interrupt_vectors Def3F8C
+A data size 4 flags 0
+dbfile M:\Sysc
+dbfile Assign43b.C
+dbsym e x 0 I
+dbsym e motorOn 2 I
+S _motorOn Def0002
+S _x Def0000
+A idata size 4 flags 0
+T 3F 8C F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF
+R 00 00 00 01
+T 3F 9A F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF
+R 00 00 00 01
+T 3F A8 F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF
+R 00 00 00 01
+T 3F B6 F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF
+R 00 00 00 01
+T 3F C4 F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF
+R 00 00 00 01
+T 3F D2 F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF
+R 00 00 00 01
+T 3F E0 F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF F8 CF
+R 00 00 00 01
+T 3F EE F8 CF 00 07 F8 CF F8 C7 F8 C3 F8 CB F8 05
+R 00 00 00 01 00 04 00 00
+T 3F FC F8 09 00 00
+R 00 00 00 01 02 04 00 05
+T 00 00 00 01
+R 00 00 00 03
+T 00 02 00 01
+R 00 00 00 03
+T 00 00 79 00 F0 16 00 CD 3D 34 B7 75 1B 9C FC
+R 00 00 00 00 00 06 00 00
+T 00 0D 00 02 8C 00 01 26 0A CC 00 00 7C 00 02 1D
+R 00 00 00 00 00 02 00 02 00 0D 00 02
+T 00 1B 02 58 80 FC 00 00 8C 00 18 26 5D CD 01 DE
+R 00 00 00 00 00 06 00 02 00 0E 00 00
+T 00 29 16 00 00 19 1C 16 00 00 C6 F0 7B 02 5A C6
+R 00 00 00 00 02 03 00 01 02 08 00 00
+T 00 37 20 7B 02 58 C6 F0 7B 02 42 20 31 C6 80 7B
+R 00 00 00 00
+T 00 45 02 40 16 00 AC C6 20 7B 02 40 16 00 AC C6
+R 00 00 00 00 00 05 00 00 00 0D 00 00
+T 00 53 40 7B 02 40 16 00 AC 79 02 40 16 00 AC 19
+R 00 00 00 00 00 07 00 00 00 0D 00 00
+T 00 61 1C 16 00 00 CD 01 DA 16 00 00 16
+R 00 00 00 00 02 04 00 01 00 07 00 00 02 0A 00 02
+T 00 6C 00 00 19 1C 16 00 00 19 1C 16 00 00 CD
+R 00 00 00 00 02 02 00 03 02 07 00 00 02 0C 00 01
+T 00 79 01 DA 16 00 00 16 00 00 2F BF FC
+R 00 00 00 00 00 02 00 00 02 05 00 02 02 08 00 04
+T 00 84 00 00 8C 00 28 26 10 CC 00 01 7C 00 02 CC
+R 00 00 00 00 00 02 00 02 00 0D 00 02
+T 00 92 00 00 7C 00 00 1D 00 38 80 1C 00 37 80 FC
+R 00 00 00 00 00 05 00 02
+T 00 A0 00 00 C3 00 01 7C 00 00 B7 57 30 0B 34 B7
+R 00 00 00 00 00 02 00 02 00 08 00 02
+T 00 AE 75 1B 9E CC 00 00 6C 1E CC 00 00 6C 1E EC
+R 00 00 00 00
+T 00 BC 1E C3 00 01 6C 1E EC 1E 8C 27 10 2D F2 B7
+R 00 00 00 00
+T 00 CA 57 30 3D 34 B7 75 1B 98 CC 00 00 6C 1E CC
+R 00 00 00 00
+T 00 D8 00 00 6C 1B 69 1D CC 00 01 6C 19 CC 01 A4
+R 00 00 00 00 00 0E 00 00
+T 00 E6 16 00 00 79 00 F0 20 5D C6 8F 7B 02 5A 79
+R 00 00 00 00 02 03 00 06
+T 00 F4 02 62 C6 08 7B 02 50 FC 00 02 8C 00 01 26
+R 00 00 00 00 00 0A 00 02
+T 01 02 04 1C 02 58 80 F6 02 60 6B 1D 1C 02 58 02
+R 00 00 00 00
+T 01 10 CC 00 00 7B 02 50 0D 1D 0F E6 1D C1 20 26
+R 00 00 00 00
+T 01 1E 19 F6 02 58 C1 82 26 12 CC 01 53 16 00 00
+R 00 00 00 00 00 0B 00 00 02 0E 00 06
+T 01 2C C6 80 7B 00 38 C6 7F 7B 00 3B 10 EF CC
+R 00 00 00 00
+T 01 39 00 00 6C 1E EC 1E C3 00 01 6C 1E EC 1E 8C
+R 00 00 00 00
+T 01 47 75 30 2D F2 EC 1B 27 9F B7 57 30 3D 4F 62
+R 00 00 00 00
+T 01 55 73 74 61 63 6C 65 20 64 65 74 65 63 74 65
+R 00 00 00 00
+T 01 63 64 2E 20 52 6F 62 6F 74 20 74 75 72 69 6E
+R 00 00 00 00
+T 01 71 67 20 72 69 67 68 74 20 69 6E 20 74 68 72
+R 00 00 00 00
+T 01 7F 65 65 20 73 65 63 6F 6E 64 73 20 28 4C 6F
+R 00 00 00 00
+T 01 8D 6F 6B 20 61 74 20 73 74 65 70 70 65 72 20
+R 00 00 00 00
+T 01 9B 6D 6F 74 6F 72 29 21 0A 00 4E 6F 20 4F 62
+R 00 00 00 00
+T 01 A9 73 74 61 63 6C 65 20 64 65 74 65 63 74 65
+R 00 00 00 00
+T 01 B7 64 21 21 21 20 28 70 72 65 73 73 20 35 20
+R 00 00 00 00
+T 01 C5 74 6F 20 64 65 74 65 63 74 20 6F 62 73 74
+R 00 00 00 00
+T 01 D3 61 63 6C 65 29 0A 00 3F 80 00 00 00 00
+R 00 00 00 00
+T 01 E0 00 00
+R 00 00 00 00

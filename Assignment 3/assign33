@@ -1,0 +1,127 @@
+#include <stdio.h>
+void printInBinaryByte(char ByteValue);
+void printInBinaryWord(unsigned int hexValue);
+int displaySystemStatus(char speed, char temperature, unsigned int proximity, unsigned int *keysPressed);
+
+ int main(void)
+{
+char speed= 0x34;
+char temperature=0x30;
+unsigned int proximity=0x8890;
+unsigned int keysPressed=1234;
+int boolResult=0;
+boolResult=displaySystemStatus(speed,temperature,proximity,&keysPressed);
+printf("\n");
+printf("%i\n",boolResult);
+asm("SWI");
+}
+
+
+int displaySystemStatus(char speed, char temperature, unsigned int proximity, unsigned int *keysPressed)
+{
+unsigned int direction;
+unsigned int objectDetect;
+printf("Speed:  ");
+printInBinaryByte(speed);
+printf("\n");
+printf("Temperature:  ");
+printInBinaryByte(temperature);
+printf("\n");
+direction=proximity;
+objectDetect=proximity;
+objectDetect=objectDetect>>15;
+if (objectDetect==1)
+	{
+		printf("Object detected!\n");
+	}
+else
+	{
+	printf(" Noo bject detected!\n");
+	}
+direction=direction &0x0007;
+if (direction==0)
+{
+	printf("Direction North!");
+	}
+else if (direction==1)
+{
+	printf("Direction South!");
+	}
+else if(direction==2)
+	{
+	printf("Direction East!");
+	}
+else if(direction==3)
+	{
+	printf("Direction West!");
+	}
+else if(direction==4)
+	{
+	printf("Direction NorthEast!");
+	}
+else if(direction==5)
+	{
+	printf("Direction NorthWest!");
+	}
+else if(direction==6)
+	{
+	printf("Direction SouthEast!");
+	}
+else if(direction==7)
+	{
+	printf("Direction SouthWest!");
+	}
+printf("\n");
+printf("keysPressed: ");
+printInBinaryWord(*keysPressed);
+return 1;
+
+}
+void printInBinaryWord(unsigned int hexValue)
+{	
+
+	int andCounter=32768;
+	int constant=hexValue;
+	int temp=0;
+	int loop=0;
+	while (loop!=16)
+	{
+		temp=constant;
+		temp=temp & andCounter;
+		if(temp==andCounter)
+		{
+			printf("1");
+		}
+		else
+		{
+			printf("0");
+			}
+		loop++;
+		andCounter=andCounter/2;
+	}
+
+}
+void printInBinaryByte(char ByteValue)
+{	
+
+	int andCounter=128;
+	int constant=ByteValue;
+	int temp=0;
+	int loop=0;
+	while (loop!=8)
+	{
+		temp=constant;
+		temp=temp & andCounter;
+		if(temp==andCounter)
+		{
+			printf("1");
+		}
+		else
+		{
+			printf("0");
+			}
+		loop++;
+		andCounter=andCounter/2;
+	}
+
+}

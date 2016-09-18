@@ -1,0 +1,482 @@
+                        .module Assign43b.C
+                        .area memory(abs)
+                        .org 0x3f8c
+ 3F8C           _interrupt_vectors::
+ 3F8C F8CF              .word 63695
+ 3F8E F8CF              .word 63695
+ 3F90 F8CF              .word 63695
+ 3F92 F8CF              .word 63695
+ 3F94 F8CF              .word 63695
+ 3F96 F8CF              .word 63695
+ 3F98 F8CF              .word 63695
+ 3F9A F8CF              .word 63695
+ 3F9C F8CF              .word 63695
+ 3F9E F8CF              .word 63695
+ 3FA0 F8CF              .word 63695
+ 3FA2 F8CF              .word 63695
+ 3FA4 F8CF              .word 63695
+ 3FA6 F8CF              .word 63695
+ 3FA8 F8CF              .word 63695
+ 3FAA F8CF              .word 63695
+ 3FAC F8CF              .word 63695
+ 3FAE F8CF              .word 63695
+ 3FB0 F8CF              .word 63695
+ 3FB2 F8CF              .word 63695
+ 3FB4 F8CF              .word 63695
+ 3FB6 F8CF              .word 63695
+ 3FB8 F8CF              .word 63695
+ 3FBA F8CF              .word 63695
+ 3FBC F8CF              .word 63695
+ 3FBE F8CF              .word 63695
+ 3FC0 F8CF              .word 63695
+ 3FC2 F8CF              .word 63695
+ 3FC4 F8CF              .word 63695
+ 3FC6 F8CF              .word 63695
+ 3FC8 F8CF              .word 63695
+ 3FCA F8CF              .word 63695
+ 3FCC F8CF              .word 63695
+ 3FCE F8CF              .word 63695
+ 3FD0 F8CF              .word 63695
+ 3FD2 F8CF              .word 63695
+ 3FD4 F8CF              .word 63695
+ 3FD6 F8CF              .word 63695
+ 3FD8 F8CF              .word 63695
+ 3FDA F8CF              .word 63695
+ 3FDC F8CF              .word 63695
+ 3FDE F8CF              .word 63695
+ 3FE0 F8CF              .word 63695
+ 3FE2 F8CF              .word 63695
+ 3FE4 F8CF              .word 63695
+ 3FE6 F8CF              .word 63695
+ 3FE8 F8CF              .word 63695
+ 3FEA F8CF              .word 63695
+ 3FEC F8CF              .word 63695
+ 3FEE F8CF              .word 63695
+ 3FF0 0007              .word _CollisionDetect
+ 3FF2 F8CF              .word 63695
+ 3FF4 F8C7              .word 63687
+ 3FF6 F8C3              .word 63683
+ 3FF8 F8CB              .word 63691
+ 3FFA F805              .word 63493
+ 3FFC F809              .word 63497
+ 3FFE 0000              .word __start
+ 4000                   .dbfile M:\Sysc 2003\Assignment 4/vectors_dp256_NoICE.c
+ 4000                   .dbsym e interrupt_vectors _interrupt_vectors A[116:58]pfV
+                        .area data
+ 0000                   .dbfile M:\Sysc 2003\Assignment 4/vectors_dp256_NoICE.c
+ 0000           _x::
+ 0000                   .blkb 2
+                        .area idata
+ 0000 0001              .word 1
+                        .area data
+ 0002                   .dbfile M:\Sysc 2003\Assignment 4/vectors_dp256_NoICE.c
+ 0002                   .dbfile Assign43b.C
+ 0002                   .dbsym e x _x I
+ 0002           _motorOn::
+ 0002                   .blkb 2
+                        .area idata
+ 0002 0001              .word 1
+                        .area data
+ 0004                   .dbfile Assign43b.C
+ 0004                   .dbsym e motorOn _motorOn I
+                        .area text
+ 0000                   .dbfile Assign43b.C
+ 0000                   .dbfunc e main _main fV
+ 0000           _main::
+ 0000                   .dbline -1
+ 0000                   .dbline 14
+ 0000           ; /*
+ 0000           ; Authors Fady Ibrahim 100876906, Gavez Smith 100857991 
+ 0000           ; */
+ 0000           ; #include<stdio.h>
+ 0000           ; #include "hcs12dp256.h"
+ 0000           ; #include "vectors_dp256_NoICE.c"
+ 0000           ; void delay();
+ 0000           ; void printKeysPressed();
+ 0000           ; int x=1;
+ 0000           ; int motorOn=1;
+ 0000           ; 
+ 0000           ; 
+ 0000           ; void main(void)
+ 0000           ; {
+ 0000                   .dbline 15
+ 0000           ; SPI1CR1=0;
+ 0000 7900F0            clr 0xf0
+ 0003                   .dbline 17
+ 0003           ; 
+ 0003           ; printKeysPressed();
+ 0003 1600CD            jsr _printKeysPressed
+ 0006                   .dbline -2
+ 0006                   .dbline 18
+ 0006           ; }
+ 0006           L3:
+ 0006                   .dbline 0 ; func end
+ 0006 3D                rts
+ 0007                   .dbend
+ 0007                   .dbfunc e CollisionDetect _CollisionDetect fV
+ 0007           ;      clockwise -> -4,x
+ 0007           _CollisionDetect::
+ 0007 34                pshx
+ 0008 B775              tfr s,x
+ 000A 1B9C              leas -4,sp
+ 000C                   .dbline -1
+ 000C                   .dbline 26
+ 000C           ; #pragma interrupt_handler CollisionDetect()
+ 000C           ; 
+ 000C           ; /*
+ 000C           ; This function is the Real-Time ISR and interruts the program when the user presses 5 on the keyboard. It executes the
+ 000C           ; interrupt turns off the dc motor waits 3-4 second and turns the steppor motor then afterwards it turns on the dc motor again.
+ 000C           ; */
+ 000C           ;  void CollisionDetect(void)
+ 000C           ; {
+ 000C                   .dbline 28
+ 000C           ; 
+ 000C           ;       if(motorOn==1)
+ 000C FC0002            ldd _motorOn
+ 000F 8C0001            cpd #1
+ 0012 260A              bne L5
+ 0014                   .dbline 29
+ 0014           ;       {
+ 0014                   .dbline 30
+ 0014           ;       motorOn=0;
+ 0014 CC0000            ldd #0
+ 0017 7C0002            std _motorOn
+ 001A                   .dbline 31
+ 001A           ;       PTP=PTP & 0x7F;
+ 001A 1D025880          bclr 0x258,#0x80
+ 001E                   .dbline 32
+ 001E           ;       }       
+ 001E           L5:
+ 001E                   .dbline 33
+ 001E           ; if (x==24)
+ 001E FC0000            ldd _x
+ 0021 8C0018            cpd #24
+ 0024 265D              bne L7
+ 0026                   .dbline 34
+ 0026           ; {
+ 0026                   .dbline 35
+ 0026           ; double clockwise =0;   //counter clockwise incrementer
+ 0026 CD01DE            ldy #L9
+ 0029 160000            jsr __tofp1
+ 002C 191C              leay -4,x
+ 002E 160000            jsr __fromfp1
+ 0031                   .dbline 37
+ 0031           ; 
+ 0031           ;       DDRP = 0xF0;//enable port P for the stepper motor
+ 0031 C6F0              ldab #240
+ 0033 7B025A            stab 0x25a
+ 0036                   .dbline 38
+ 0036           ;       PTP = 0x20;
+ 0036 C620              ldab #32
+ 0038 7B0258            stab 0x258
+ 003B                   .dbline 39
+ 003B           ;       DDRT = 0xF0;//enable the bottom and left coils for the stepper motor
+ 003B C6F0              ldab #240
+ 003D 7B0242            stab 0x242
+ 0040 2031              bra L11
+ 0042           L10:
+ 0042                   .dbline 41
+ 0042                   .dbline 42
+ 0042 C680              ldab #128
+ 0044 7B0240            stab 0x240
+ 0047                   .dbline 43
+ 0047 1600AC            jsr _delay
+ 004A                   .dbline 44
+ 004A C620              ldab #32
+ 004C 7B0240            stab 0x240
+ 004F                   .dbline 45
+ 004F 1600AC            jsr _delay
+ 0052                   .dbline 46
+ 0052 C640              ldab #64
+ 0054 7B0240            stab 0x240
+ 0057                   .dbline 47
+ 0057 1600AC            jsr _delay
+ 005A                   .dbline 48
+ 005A 790240            clr 0x240
+ 005D                   .dbline 49
+ 005D 1600AC            jsr _delay
+ 0060                   .dbline 50
+ 0060 191C              leay -4,x
+ 0062 160000            jsr __tofp1
+ 0065 CD01DA            ldy #L13
+ 0068 160000            jsr __tofp2
+ 006B 160000            jsr __fpadd
+ 006E 191C              leay -4,x
+ 0070 160000            jsr __fromfp1
+ 0073                   .dbline 51
+ 0073           L11:
+ 0073                   .dbline 41
+ 0073           ;       
+ 0073           ;       while(clockwise<=1){//spin the stepper motor clockwise
+ 0073 191C              leay -4,x
+ 0075 160000            jsr __tofp1
+ 0078 CD01DA            ldy #L13
+ 007B 160000            jsr __tofp2
+ 007E 160000            jsr __fpcmp
+ 0081 2FBF              ble L10
+ 0083                   .dbline 52
+ 0083           ;          PTT = 0x80;
+ 0083           ;          delay();
+ 0083           ;          PTT = 0x20;
+ 0083           ;          delay();
+ 0083           ;          PTT = 0x40;
+ 0083           ;          delay();
+ 0083           ;          PTT = 0x00;
+ 0083           ;          delay();
+ 0083           ;          clockwise++;
+ 0083           ;       }
+ 0083           ; }
+ 0083           L7:
+ 0083                   .dbline 53
+ 0083           ; if (x==40)
+ 0083 FC0000            ldd _x
+ 0086 8C0028            cpd #40
+ 0089 2610              bne L14
+ 008B                   .dbline 54
+ 008B           ; {
+ 008B                   .dbline 55
+ 008B           ;       motorOn=1;
+ 008B CC0001            ldd #1
+ 008E 7C0002            std _motorOn
+ 0091                   .dbline 56
+ 0091           ;       x=0;
+ 0091 CC0000            ldd #0
+ 0094 7C0000            std _x
+ 0097                   .dbline 57
+ 0097           ;       CRGINT= CRGINT & 0x7F;
+ 0097 1D003880          bclr 0x38,#0x80
+ 009B                   .dbline 58
+ 009B           ; }
+ 009B           L14:
+ 009B                   .dbline 59
+ 009B           ;  CRGFLG|= 0x80;
+ 009B 1C003780          bset 0x37,#128
+ 009F                   .dbline 60
+ 009F           ; x++;
+ 009F FC0000            ldd _x
+ 00A2 C30001            addd #1
+ 00A5 7C0000            std _x
+ 00A8                   .dbline -2
+ 00A8                   .dbline 61
+ 00A8           ; } 
+ 00A8           L4:
+ 00A8 B757              tfr x,s
+ 00AA 30                pulx
+ 00AB                   .dbline 0 ; func end
+ 00AB 0B                rti
+ 00AC                   .dbsym l clockwise -4 D
+ 00AC                   .dbend
+ 00AC                   .dbfunc e delay _delay fV
+ 00AC           ;              i -> -2,x
+ 00AC           _delay::
+ 00AC 34                pshx
+ 00AD B775              tfr s,x
+ 00AF 1B9E              leas -2,sp
+ 00B1                   .dbline -1
+ 00B1                   .dbline 63
+ 00B1           ; 
+ 00B1           ; void delay(){//delay for a considerable 10 ms
+ 00B1                   .dbline 64
+ 00B1           ;    int i = 0;   //counter
+ 00B1 CC0000            ldd #0
+ 00B4 6C1E              std -2,x
+ 00B6                   .dbline 65
+ 00B6 CC0000            ldd #0
+ 00B9 6C1E              std -2,x
+ 00BB           L17:
+ 00BB                   .dbline 65
+ 00BB                   .dbline 66
+ 00BB           L18:
+ 00BB                   .dbline 65
+ 00BB           ;    for(i=0; i<10000; i++){
+ 00BB EC1E              ldd -2,x
+ 00BD C30001            addd #1
+ 00C0 6C1E              std -2,x
+ 00C2                   .dbline 65
+ 00C2 EC1E              ldd -2,x
+ 00C4 8C2710            cpd #10000
+ 00C7 2DF2              blt L17
+ 00C9                   .dbline -2
+ 00C9                   .dbline 67
+ 00C9           ;    }
+ 00C9           ; }
+ 00C9           L16:
+ 00C9 B757              tfr x,s
+ 00CB 30                pulx
+ 00CC                   .dbline 0 ; func end
+ 00CC 3D                rts
+ 00CD                   .dbsym l i -2 I
+ 00CD                   .dbend
+ 00CD                   .dbfunc e printKeysPressed _printKeysPressed fV
+ 00CD           ;        counter -> -7,x
+ 00CD           ;           loop -> -5,x
+ 00CD           ;     keypressed -> -3,x
+ 00CD           ;              i -> -2,x
+ 00CD           _printKeysPressed::
+ 00CD 34                pshx
+ 00CE B775              tfr s,x
+ 00D0 1B98              leas -8,sp
+ 00D2                   .dbline -1
+ 00D2                   .dbline 72
+ 00D2           ; 
+ 00D2           ; /*
+ 00D2           ; checks to see if key 5 is pressed if it is enable the realtime interrupt, else keep the dc motor running.
+ 00D2           ; */
+ 00D2           ; void printKeysPressed(){
+ 00D2                   .dbline 73
+ 00D2           ;       int i=0;
+ 00D2 CC0000            ldd #0
+ 00D5 6C1E              std -2,x
+ 00D7                   .dbline 74
+ 00D7           ;       int loop=0;
+ 00D7 CC0000            ldd #0
+ 00DA 6C1B              std -5,x
+ 00DC                   .dbline 75
+ 00DC           ;       char keypressed=0;
+ 00DC 691D              clr -3,x
+ 00DE                   .dbline 76
+ 00DE           ;       int counter=1;
+ 00DE CC0001            ldd #1
+ 00E1 6C19              std -7,x
+ 00E3                   .dbline 78
+ 00E3           ; 
+ 00E3           ;       printf("No Obstacle detected!!! (press 5 to detect obstacle)\n");       
+ 00E3 CC01A4            ldd #L22
+ 00E6 160000            jsr _printf
+ 00E9                   .dbline 79
+ 00E9           ;       SPI1CR1=0x00;
+ 00E9 7900F0            clr 0xf0
+ 00EC 205D              bra L24
+ 00EE           L23:
+ 00EE                   .dbline 83
+ 00EE           ; 
+ 00EE           ; 
+ 00EE           ;       while (loop==0)
+ 00EE           ;       {
+ 00EE                   .dbline 85
+ 00EE           ;       // turns on the motor and the the output pins for the rows on the keypad.
+ 00EE           ;       DDRP=0x8F;
+ 00EE C68F              ldab #143
+ 00F0 7B025A            stab 0x25a
+ 00F3                   .dbline 87
+ 00F3           ;       //turns on the collums.
+ 00F3           ;       DDRH=0x00;      
+ 00F3 790262            clr 0x262
+ 00F6                   .dbline 88
+ 00F6           ;       PTM = 0x08;
+ 00F6 C608              ldab #8
+ 00F8 7B0250            stab 0x250
+ 00FB                   .dbline 89
+ 00FB           ;       if(motorOn==1)
+ 00FB FC0002            ldd _motorOn
+ 00FE 8C0001            cpd #1
+ 0101 2604              bne L26
+ 0103                   .dbline 90
+ 0103           ;       {
+ 0103                   .dbline 91
+ 0103           ;       PTP=PTP | 0x80;
+ 0103 1C025880          bset 0x258,#128
+ 0107                   .dbline 92
+ 0107           ;       }                                                       
+ 0107           L26:
+ 0107                   .dbline 93
+ 0107           ;       keypressed=PTH;
+ 0107                   ; vol
+ 0107 F60260            ldab 0x260
+ 010A 6B1D              stab -3,x
+ 010C                   .dbline 94
+ 010C           ;       PTP= PTP | 0x02;
+ 010C 1C025802          bset 0x258,#2
+ 0110                   .dbline 95
+ 0110           ;       PTM =PTM & 0x00;
+ 0110 CC0000            ldd #0
+ 0113 7B0250            stab 0x250
+ 0116                   .dbline 96
+ 0116           ;       keypressed &= 0xF0;
+ 0116 0D1D0F            bclr -3,x,#0xf
+ 0119                   .dbline 98
+ 0119           ;       
+ 0119           ;       if (keypressed==0x20 && PTP==0x82)
+ 0119 E61D              ldab -3,x
+ 011B C120              cmpb #32
+ 011D 2619              bne L28
+ 011F                   ; vol
+ 011F F60258            ldab 0x258
+ 0122 C182              cmpb #130
+ 0124 2612              bne L28
+ 0126                   .dbline 99
+ 0126           ;       {
+ 0126                   .dbline 100
+ 0126           ;       printf ("Obstacle detected. Robot turing right in three seconds (Look at stepper motor)!\n");   
+ 0126 CC0153            ldd #L30
+ 0129 160000            jsr _printf
+ 012C                   .dbline 101
+ 012C           ;       CRGINT=0x80; //enable realtime interrupt
+ 012C C680              ldab #128
+ 012E 7B0038            stab 0x38
+ 0131                   .dbline 102
+ 0131           ;       RTICTL=0x7F;// set the period frequency.
+ 0131 C67F              ldab #127
+ 0133 7B003B            stab 0x3b
+ 0136                   .dbline 103
+ 0136           ;       asm("cli");
+ 0136 10EF                      cli
+ 0138           
+ 0138                   .dbline 104
+ 0138           ;       }
+ 0138           L28:
+ 0138                   .dbline 107
+ 0138 CC0000            ldd #0
+ 013B 6C1E              std -2,x
+ 013D           L31:
+ 013D                   .dbline 107
+ 013D           L32:
+ 013D                   .dbline 107
+ 013D EC1E              ldd -2,x
+ 013F C30001            addd #1
+ 0142 6C1E              std -2,x
+ 0144                   .dbline 107
+ 0144 EC1E              ldd -2,x
+ 0146 8C7530            cpd #30000
+ 0149 2DF2              blt L31
+ 014B                   .dbline 110
+ 014B           L24:
+ 014B                   .dbline 82
+ 014B EC1B              ldd -5,x
+ 014D 279F              beq L23
+ 014F                   .dbline -2
+ 014F                   .dbline 112
+ 014F           ; 
+ 014F           ;       
+ 014F           ;       for ( i=0;i<30000;i++);
+ 014F           ;       
+ 014F           ; 
+ 014F           ;       }
+ 014F           ;               
+ 014F           ; }
+ 014F           L21:
+ 014F B757              tfr x,s
+ 0151 30                pulx
+ 0152                   .dbline 0 ; func end
+ 0152 3D                rts
+ 0153                   .dbsym l counter -7 I
+ 0153                   .dbsym l loop -5 I
+ 0153                   .dbsym l keypressed -3 c
+ 0153                   .dbsym l i -2 I
+ 0153                   .dbend
+ 0153           L30:
+ 0153 4F62737461636C652064657465637465  .byte 'O,'b,'s,'t,'a,'c,'l,'e,32,'d,'e,'t,'e,'c,'t,'e
+ 0163 642E20526F626F7420747572696E6720  .byte 'd,46,32,'R,'o,'b,'o,'t,32,'t,'u,'r,'i,'n,'g,32
+ 0173 726967687420696E2074687265652073  .byte 'r,'i,'g,'h,'t,32,'i,'n,32,'t,'h,'r,'e,'e,32,'s
+ 0183 65636F6E647320284C6F6F6B20617420  .byte 'e,'c,'o,'n,'d,'s,32,40,'L,'o,'o,'k,32,'a,'t,32
+ 0193 73746570706572206D6F746F7229210A  .byte 's,'t,'e,'p,'p,'e,'r,32,'m,'o,'t,'o,'r,41,33,10
+ 01A3 00                .byte 0
+ 01A4           L22:
+ 01A4 4E6F204F62737461636C652064657465  .byte 'N,'o,32,'O,'b,'s,'t,'a,'c,'l,'e,32,'d,'e,'t,'e
+ 01B4 63746564212121202870726573732035  .byte 'c,'t,'e,'d,33,33,33,32,40,'p,'r,'e,'s,'s,32,53
+ 01C4 20746F20646574656374206F62737461  .byte 32,'t,'o,32,'d,'e,'t,'e,'c,'t,32,'o,'b,'s,'t,'a
+ 01D4 636C65290A00      .byte 'c,'l,'e,41,10,0
+ 01DA           L13:
+ 01DA 3F800000          .word 0x3f80,0x0
+ 01DE           L9:
+ 01DE 00000000          .word 0x0,0x0

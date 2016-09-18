@@ -1,0 +1,25 @@
+#include "hcs12dp256.h"
+#include "database.h"
+#include "vectors_dp256_NoICE2.c"
+
+
+#pragma interrupt_handler AccelINT()
+void AccelINT(void);
+
+int accelation;
+
+void main(void)
+{
+SPI1CR1=0;
+DRA=80;
+
+asm("cli");
+
+
+}
+
+void AccelINT(void)
+{
+accerlation =PTA01;
+ATD0CTL5=0x86;
+}
